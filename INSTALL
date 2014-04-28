@@ -1,0 +1,9 @@
+Building Desicoin
+
+See doc/readme-qt.rst for instructions on building Desicoin-Qt,
+the intended-for-end-users, nice-graphical-interface, reference
+implementation of Desicoin.
+
+See doc/build-*.txt for instructions on building desicoind,
+the intended-for-services, no-graphical-interface, reference
+implementation of Desicoin.
