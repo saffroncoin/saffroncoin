@@ -4,13 +4,13 @@
     <name>AboutDialog</name>
     <message>
         <location filename="../forms/aboutdialog.ui" line="+14"/>
-        <source>About Desicoin</source>
-        <translation>Over Desicoin</translation>
+        <source>About Saffroncoin</source>
+        <translation>Over Saffroncoin</translation>
     </message>
     <message>
         <location line="+39"/>
-        <source>&lt;b&gt;Desicoin&lt;/b&gt; version</source>
-        <translation>&lt;b&gt;Desicoin&lt;/b&gt; versie</translation>
+        <source>&lt;b&gt;Saffroncoin&lt;/b&gt; version</source>
+        <translation>&lt;b&gt;Saffroncoin&lt;/b&gt; versie</translation>
     </message>
     <message>
         <location line="+57"/>
@@ -34,8 +34,8 @@ Dit product bevat software ontwikkeld door het OpenSSL Project voor gebruik in d
     </message>
     <message>
         <location line="+0"/>
-        <source>The Desicoin developers</source>
-        <translation>De Desicoin-ontwikkelaars</translation>
+        <source>The Saffroncoin developers</source>
+        <translation>De Saffroncoin-ontwikkelaars</translation>
     </message>
 </context>
 <context>
@@ -67,8 +67,8 @@ Dit product bevat software ontwikkeld door het OpenSSL Project voor gebruik in d
     </message>
     <message>
         <location filename="../addressbookpage.cpp" line="+63"/>
-        <source>These are your Desicoin addresses for receiving payments. You may want to give a different one to each sender so you can keep track of who is paying you.</source>
-        <translation>Dit zijn uw Desicoinadressen om betalingen mee te ontvangen. U kunt er voor kiezen om een uniek adres aan te maken voor elke afzender. Op deze manier kunt u bijhouden wie al aan u betaald heeft.</translation>
+        <source>These are your Saffroncoin addresses for receiving payments. You may want to give a different one to each sender so you can keep track of who is paying you.</source>
+        <translation>Dit zijn uw Saffroncoinadressen om betalingen mee te ontvangen. U kunt er voor kiezen om een uniek adres aan te maken voor elke afzender. Op deze manier kunt u bijhouden wie al aan u betaald heeft.</translation>
     </message>
     <message>
         <location filename="../forms/addressbookpage.ui" line="+14"/>
@@ -82,8 +82,8 @@ Dit product bevat software ontwikkeld door het OpenSSL Project voor gebruik in d
     </message>
     <message>
         <location line="+11"/>
-        <source>Sign a message to prove you own a Desicoin address</source>
-        <translation>Onderteken een bericht om te bewijzen dat u een bepaald Desicoinadres bezit</translation>
+        <source>Sign a message to prove you own a Saffroncoin address</source>
+        <translation>Onderteken een bericht om te bewijzen dat u een bepaald Saffroncoinadres bezit</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -107,8 +107,8 @@ Dit product bevat software ontwikkeld door het OpenSSL Project voor gebruik in d
     </message>
     <message>
         <location line="-44"/>
-        <source>Verify a message to ensure it was signed with a specified Desicoin address</source>
-        <translation>Controleer een bericht om te verifiëren dat het gespecificeerde Desicoinadres het bericht heeft ondertekend.</translation>
+        <source>Verify a message to ensure it was signed with a specified Saffroncoin address</source>
+        <translation>Controleer een bericht om te verifiëren dat het gespecificeerde Saffroncoinadres het bericht heeft ondertekend.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -122,8 +122,8 @@ Dit product bevat software ontwikkeld door het OpenSSL Project voor gebruik in d
     </message>
     <message>
         <location filename="../addressbookpage.cpp" line="-5"/>
-        <source>These are your Desicoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
-        <translation>Dit zijn uw Desicoinadressen om betalingen mee te verzenden. Check altijd het bedrag en het ontvangende adres voordat u uw desicoins verzendt.</translation>
+        <source>These are your Saffroncoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <translation>Dit zijn uw Saffroncoinadressen om betalingen mee te verzenden. Check altijd het bedrag en het ontvangende adres voordat u uw saffroncoins verzendt.</translation>
     </message>
     <message>
         <location line="+13"/>
@@ -248,8 +248,8 @@ Dit product bevat software ontwikkeld door het OpenSSL Project voor gebruik in d
     </message>
     <message>
         <location line="+1"/>
-        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR DESICOINS&lt;/b&gt;!</source>
-        <translation>Waarschuwing: Als u uw portemonnee versleutelt en uw wachtwoord vergeet, zult u &lt;b&gt;AL UW DESICOINS VERLIEZEN&lt;/b&gt;!</translation>
+        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR SAFFRONCOINS&lt;/b&gt;!</source>
+        <translation>Waarschuwing: Als u uw portemonnee versleutelt en uw wachtwoord vergeet, zult u &lt;b&gt;AL UW SAFFRONCOINS VERLIEZEN&lt;/b&gt;!</translation>
     </message>
     <message>
         <location line="+0"/>
@@ -275,8 +275,8 @@ Dit product bevat software ontwikkeld door het OpenSSL Project voor gebruik in d
     </message>
     <message>
         <location line="-56"/>
-        <source>Desicoin will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your desicoins from being stolen by malware infecting your computer.</source>
-        <translation>Desicoin zal nu afsluiten om het versleutelingsproces te voltooien. Onthoud dat het versleutelen van uw portemonnee u niet volledig kan beschermen: Malware kan uw computer infecteren en uw desicoins stelen.</translation>
+        <source>Saffroncoin will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your saffroncoins from being stolen by malware infecting your computer.</source>
+        <translation>Saffroncoin zal nu afsluiten om het versleutelingsproces te voltooien. Onthoud dat het versleutelen van uw portemonnee u niet volledig kan beschermen: Malware kan uw computer infecteren en uw saffroncoins stelen.</translation>
     </message>
     <message>
         <location line="+13"/>
@@ -374,8 +374,8 @@ Dit product bevat software ontwikkeld door het OpenSSL Project voor gebruik in d
     </message>
     <message>
         <location line="+4"/>
-        <source>Show information about Desicoin</source>
-        <translation>Laat informatie zien over Desicoin</translation>
+        <source>Show information about Saffroncoin</source>
+        <translation>Laat informatie zien over Saffroncoin</translation>
     </message>
     <message>
         <location line="+2"/>
@@ -419,13 +419,13 @@ Dit product bevat software ontwikkeld door het OpenSSL Project voor gebruik in d
     </message>
     <message>
         <location line="-347"/>
-        <source>Send coins to a Desicoin address</source>
-        <translation>Verstuur munten naar een Desicoinadres</translation>
+        <source>Send coins to a Saffroncoin address</source>
+        <translation>Verstuur munten naar een Saffroncoinadres</translation>
     </message>
     <message>
         <location line="+49"/>
-        <source>Modify configuration options for Desicoin</source>
-        <translation>Wijzig instellingen van Desicoin</translation>
+        <source>Modify configuration options for Saffroncoin</source>
+        <translation>Wijzig instellingen van Saffroncoin</translation>
     </message>
     <message>
         <location line="+9"/>
@@ -455,8 +455,8 @@ Dit product bevat software ontwikkeld door het OpenSSL Project voor gebruik in d
     <message>
         <location line="-165"/>
         <location line="+530"/>
-        <source>Desicoin</source>
-        <translation>Desicoin</translation>
+        <source>Saffroncoin</source>
+        <translation>Saffroncoin</translation>
     </message>
     <message>
         <location line="-530"/>
@@ -480,8 +480,8 @@ Dit product bevat software ontwikkeld door het OpenSSL Project voor gebruik in d
     </message>
     <message>
         <location line="+22"/>
-        <source>&amp;About Desicoin</source>
-        <translation>&amp;Over Desicoin</translation>
+        <source>&amp;About Saffroncoin</source>
+        <translation>&amp;Over Saffroncoin</translation>
     </message>
     <message>
         <location line="+9"/>
@@ -500,13 +500,13 @@ Dit product bevat software ontwikkeld door het OpenSSL Project voor gebruik in d
     </message>
     <message>
         <location line="+7"/>
-        <source>Sign messages with your Desicoin addresses to prove you own them</source>
-        <translation>Onderteken berichten met uw Desicoinadressen om te bewijzen dat u deze adressen bezit</translation>
+        <source>Sign messages with your Saffroncoin addresses to prove you own them</source>
+        <translation>Onderteken berichten met uw Saffroncoinadressen om te bewijzen dat u deze adressen bezit</translation>
     </message>
     <message>
         <location line="+2"/>
-        <source>Verify messages to ensure they were signed with specified Desicoin addresses</source>
-        <translation>Verifiëer handtekeningen om zeker te zijn dat de berichten zijn ondertekend met de gespecificeerde Desicoinadressen</translation>
+        <source>Verify messages to ensure they were signed with specified Saffroncoin addresses</source>
+        <translation>Verifiëer handtekeningen om zeker te zijn dat de berichten zijn ondertekend met de gespecificeerde Saffroncoinadressen</translation>
     </message>
     <message>
         <location line="+28"/>
@@ -536,13 +536,13 @@ Dit product bevat software ontwikkeld door het OpenSSL Project voor gebruik in d
     </message>
     <message>
         <location line="+47"/>
-        <source>Desicoin client</source>
-        <translation>Desicoin client</translation>
+        <source>Saffroncoin client</source>
+        <translation>Saffroncoin client</translation>
     </message>
     <message numerus="yes">
         <location line="+141"/>
-        <source>%n active connection(s) to Desicoin network</source>
-        <translation><numerusform>%n actieve connectie naar Desicoinnetwerk</numerusform><numerusform>%n actieve connecties naar Desicoinnetwerk</numerusform></translation>
+        <source>%n active connection(s) to Saffroncoin network</source>
+        <translation><numerusform>%n actieve connectie naar Saffroncoinnetwerk</numerusform><numerusform>%n actieve connecties naar Saffroncoinnetwerk</numerusform></translation>
     </message>
     <message>
         <location line="+22"/>
@@ -607,7 +607,7 @@ Dit product bevat software ontwikkeld door het OpenSSL Project voor gebruik in d
     <message>
         <location line="+70"/>
         <source>This transaction is over the size limit. You can still send it for a fee of %1, which goes to the nodes that process your transaction and helps to support the network. Do you want to pay the fee?</source>
-        <translation>Deze transactie overschrijdt de groottelimiet. Om de transactie alsnog te versturen kunt u transactiekosten betalen van %1. Deze transactiekosten gaan naar de nodes die uw transactie verwerken en het helpt op deze manier bij het ondersteunen van het Desicoinnetwerk. Wilt u de transactiekosten betalen?</translation>
+        <translation>Deze transactie overschrijdt de groottelimiet. Om de transactie alsnog te versturen kunt u transactiekosten betalen van %1. Deze transactiekosten gaan naar de nodes die uw transactie verwerken en het helpt op deze manier bij het ondersteunen van het Saffroncoinnetwerk. Wilt u de transactiekosten betalen?</translation>
     </message>
     <message>
         <location line="-140"/>
@@ -656,8 +656,8 @@ Adres: %4
     <message>
         <location line="-23"/>
         <location line="+23"/>
-        <source>URI can not be parsed! This can be caused by an invalid Desicoin address or malformed URI parameters.</source>
-        <translation>URI kan niet worden geïnterpreteerd. Dit kan komen door een ongeldig Desicoinadres of misvormde URI-parameters.</translation>
+        <source>URI can not be parsed! This can be caused by an invalid Saffroncoin address or malformed URI parameters.</source>
+        <translation>URI kan niet worden geïnterpreteerd. Dit kan komen door een ongeldig Saffroncoinadres of misvormde URI-parameters.</translation>
     </message>
     <message>
         <location line="+17"/>
@@ -671,8 +671,8 @@ Adres: %4
     </message>
     <message>
         <location filename="../bitcoin.cpp" line="+111"/>
-        <source>A fatal error occurred. Desicoin can no longer continue safely and will quit.</source>
-        <translation>Er is een fatale fout opgetreden. Desicoin kan niet meer veilig doorgaan en zal nu afgesloten worden.</translation>
+        <source>A fatal error occurred. Saffroncoin can no longer continue safely and will quit.</source>
+        <translation>Er is een fatale fout opgetreden. Saffroncoin kan niet meer veilig doorgaan en zal nu afgesloten worden.</translation>
     </message>
 </context>
 <context>
@@ -737,8 +737,8 @@ Adres: %4
     </message>
     <message>
         <location line="-5"/>
-        <source>The entered address &quot;%1&quot; is not a valid Desicoin address.</source>
-        <translation>Het opgegeven adres &quot;%1&quot; is een ongeldig Desicoinadres</translation>
+        <source>The entered address &quot;%1&quot; is not a valid Saffroncoin address.</source>
+        <translation>Het opgegeven adres &quot;%1&quot; is een ongeldig Saffroncoinadres</translation>
     </message>
     <message>
         <location line="+10"/>
@@ -756,8 +756,8 @@ Adres: %4
     <message>
         <location filename="../guiutil.cpp" line="+424"/>
         <location line="+12"/>
-        <source>Desicoin-Qt</source>
-        <translation>Desicoin-Qt</translation>
+        <source>Saffroncoin-Qt</source>
+        <translation>Saffroncoin-Qt</translation>
     </message>
     <message>
         <location line="-12"/>
@@ -819,13 +819,13 @@ Adres: %4
     </message>
     <message>
         <location line="+31"/>
-        <source>Automatically start Desicoin after logging in to the system.</source>
-        <translation>Start Desicoin automatisch na inloggen in het systeem</translation>
+        <source>Automatically start Saffroncoin after logging in to the system.</source>
+        <translation>Start Saffroncoin automatisch na inloggen in het systeem</translation>
     </message>
     <message>
         <location line="+3"/>
-        <source>&amp;Start Desicoin on system login</source>
-        <translation>Start &amp;Desicoin bij het inloggen in het systeem</translation>
+        <source>&amp;Start Saffroncoin on system login</source>
+        <translation>Start &amp;Saffroncoin bij het inloggen in het systeem</translation>
     </message>
     <message>
         <location line="+35"/>
@@ -844,8 +844,8 @@ Adres: %4
     </message>
     <message>
         <location line="+6"/>
-        <source>Automatically open the Desicoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>Open de Desicoin-poort automatisch op de router. Dit werkt alleen als de router UPnP ondersteunt en het aanstaat.</translation>
+        <source>Automatically open the Saffroncoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <translation>Open de Saffroncoin-poort automatisch op de router. Dit werkt alleen als de router UPnP ondersteunt en het aanstaat.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -854,8 +854,8 @@ Adres: %4
     </message>
     <message>
         <location line="+7"/>
-        <source>Connect to the Desicoin network through a SOCKS proxy (e.g. when connecting through Tor).</source>
-        <translation>Verbind met het Desicoin-netwerk via een SOCKS-proxy (bijv. wanneer u via Tor wilt verbinden)</translation>
+        <source>Connect to the Saffroncoin network through a SOCKS proxy (e.g. when connecting through Tor).</source>
+        <translation>Verbind met het Saffroncoin-netwerk via een SOCKS-proxy (bijv. wanneer u via Tor wilt verbinden)</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -929,8 +929,8 @@ Adres: %4
     </message>
     <message>
         <location line="+13"/>
-        <source>The user interface language can be set here. This setting will take effect after restarting Desicoin.</source>
-        <translation>De taal van de gebruikersinterface kan hier ingesteld worden. Deze instelling zal pas van kracht worden nadat Desicoin herstart wordt.</translation>
+        <source>The user interface language can be set here. This setting will take effect after restarting Saffroncoin.</source>
+        <translation>De taal van de gebruikersinterface kan hier ingesteld worden. Deze instelling zal pas van kracht worden nadat Saffroncoin herstart wordt.</translation>
     </message>
     <message>
         <location line="+11"/>
@@ -944,8 +944,8 @@ Adres: %4
     </message>
     <message>
         <location line="+9"/>
-        <source>Whether to show Desicoin addresses in the transaction list or not.</source>
-        <translation>Of Desicoinadressen getoond worden in de transactielijst</translation>
+        <source>Whether to show Saffroncoin addresses in the transaction list or not.</source>
+        <translation>Of Saffroncoinadressen getoond worden in de transactielijst</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -996,8 +996,8 @@ Adres: %4
     <message>
         <location line="-9"/>
         <location line="+9"/>
-        <source>This setting will take effect after restarting Desicoin.</source>
-        <translation>Deze instelling zal pas van kracht worden na het herstarten van Desicoin.</translation>
+        <source>This setting will take effect after restarting Saffroncoin.</source>
+        <translation>Deze instelling zal pas van kracht worden na het herstarten van Saffroncoin.</translation>
     </message>
     <message>
         <location line="+29"/>
@@ -1015,8 +1015,8 @@ Adres: %4
     <message>
         <location line="+50"/>
         <location line="+166"/>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Desicoin network after a connection is established, but this process has not completed yet.</source>
-        <translation>De weergegeven informatie kan verouderd zijn. Uw portemonnee synchroniseert automaticsh met het Desicoinnetwerk nadat een verbinding is gelegd, maar dit proces is nog niet voltooid.</translation>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Saffroncoin network after a connection is established, but this process has not completed yet.</source>
+        <translation>De weergegeven informatie kan verouderd zijn. Uw portemonnee synchroniseert automaticsh met het Saffroncoinnetwerk nadat een verbinding is gelegd, maar dit proces is nog niet voltooid.</translation>
     </message>
     <message>
         <location line="-124"/>
@@ -1069,8 +1069,8 @@ Adres: %4
     <name>PaymentServer</name>
     <message>
         <location filename="../paymentserver.cpp" line="+107"/>
-        <source>Cannot start desicoin: click-to-pay handler</source>
-        <translation>Kan desicoin niet starten: click-to-pay handler</translation>
+        <source>Cannot start saffroncoin: click-to-pay handler</source>
+        <translation>Kan saffroncoin niet starten: click-to-pay handler</translation>
     </message>
 </context>
 <context>
@@ -1219,8 +1219,8 @@ Adres: %4
     </message>
     <message>
         <location line="+7"/>
-        <source>Show the Desicoin-Qt help message to get a list with possible Desicoin command-line options.</source>
-        <translation>Toon het DesicoinQt-hulpbericht voor een lijst met mogelijke Desicoin commandoregel-opties.</translation>
+        <source>Show the Saffroncoin-Qt help message to get a list with possible Saffroncoin command-line options.</source>
+        <translation>Toon het SaffroncoinQt-hulpbericht voor een lijst met mogelijke Saffroncoin commandoregel-opties.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1239,13 +1239,13 @@ Adres: %4
     </message>
     <message>
         <location line="-104"/>
-        <source>Desicoin - Debug window</source>
-        <translation>Desicoin-debugscherm</translation>
+        <source>Saffroncoin - Debug window</source>
+        <translation>Saffroncoin-debugscherm</translation>
     </message>
     <message>
         <location line="+25"/>
-        <source>Desicoin Core</source>
-        <translation>Desicoin Kern</translation>
+        <source>Saffroncoin Core</source>
+        <translation>Saffroncoin Kern</translation>
     </message>
     <message>
         <location line="+279"/>
@@ -1254,8 +1254,8 @@ Adres: %4
     </message>
     <message>
         <location line="+7"/>
-        <source>Open the Desicoin debug log file from the current data directory. This can take a few seconds for large log files.</source>
-        <translation>Open het Desicoindebug-logbestand van de huidige datamap. Dit kan een aantal seconden duren voor grote logbestanden.</translation>
+        <source>Open the Saffroncoin debug log file from the current data directory. This can take a few seconds for large log files.</source>
+        <translation>Open het Saffroncoindebug-logbestand van de huidige datamap. Dit kan een aantal seconden duren voor grote logbestanden.</translation>
     </message>
     <message>
         <location line="+102"/>
@@ -1264,8 +1264,8 @@ Adres: %4
     </message>
     <message>
         <location filename="../rpcconsole.cpp" line="-30"/>
-        <source>Welcome to the Desicoin RPC console.</source>
-        <translation>Welkom bij de Desicoin RPC-console.</translation>
+        <source>Welcome to the Saffroncoin RPC console.</source>
+        <translation>Welkom bij de Saffroncoin RPC-console.</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -1407,8 +1407,8 @@ Adres: %4
     </message>
     <message>
         <location line="+34"/>
-        <source>The address to send the payment to (e.g. Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</source>
-        <translation>Het adres waaraan u wilt betalen  (bijv. Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</translation>
+        <source>The address to send the payment to (e.g. 1NS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</source>
+        <translation>Het adres waaraan u wilt betalen  (bijv. 1NS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</translation>
     </message>
     <message>
         <location line="+60"/>
@@ -1448,8 +1448,8 @@ Adres: %4
     </message>
     <message>
         <location filename="../sendcoinsentry.cpp" line="+1"/>
-        <source>Enter a Desicoin address (e.g. Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</source>
-        <translation>Vul een Desicoinadres in (bijv. Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</translation>
+        <source>Enter a Saffroncoin address (e.g. 1NS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</source>
+        <translation>Vul een Saffroncoinadres in (bijv. 1NS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</translation>
     </message>
 </context>
 <context>
@@ -1471,8 +1471,8 @@ Adres: %4
     </message>
     <message>
         <location line="+18"/>
-        <source>The address to sign the message with (e.g. Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</source>
-        <translation>Het adres om het bericht mee te ondertekenen (Vb.: Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2).</translation>
+        <source>The address to sign the message with (e.g. 1NS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</source>
+        <translation>Het adres om het bericht mee te ondertekenen (Vb.: 1NS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L).</translation>
     </message>
     <message>
         <location line="+10"/>
@@ -1513,8 +1513,8 @@ Adres: %4
     </message>
     <message>
         <location line="+21"/>
-        <source>Sign the message to prove you own this Desicoin address</source>
-        <translation>Onderteken een bericht om te bewijzen dat u een bepaald Desicoinadres bezit</translation>
+        <source>Sign the message to prove you own this Saffroncoin address</source>
+        <translation>Onderteken een bericht om te bewijzen dat u een bepaald Saffroncoinadres bezit</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1544,13 +1544,13 @@ Adres: %4
     </message>
     <message>
         <location line="+21"/>
-        <source>The address the message was signed with (e.g. Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</source>
-        <translation>Het adres waarmee bet bericht was ondertekend (Vb.: Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2).</translation>
+        <source>The address the message was signed with (e.g. 1NS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</source>
+        <translation>Het adres waarmee bet bericht was ondertekend (Vb.: 1NS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L).</translation>
     </message>
     <message>
         <location line="+40"/>
-        <source>Verify the message to ensure it was signed with the specified Desicoin address</source>
-        <translation>Controleer een bericht om te verifiëren dat het gespecificeerde Desicoinadres het bericht heeft ondertekend.</translation>
+        <source>Verify the message to ensure it was signed with the specified Saffroncoin address</source>
+        <translation>Controleer een bericht om te verifiëren dat het gespecificeerde Saffroncoinadres het bericht heeft ondertekend.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1565,8 +1565,8 @@ Adres: %4
     <message>
         <location filename="../signverifymessagedialog.cpp" line="+27"/>
         <location line="+3"/>
-        <source>Enter a Desicoin address (e.g. Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</source>
-        <translation>Vul een Desicoinadres in (bijv. Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</translation>
+        <source>Enter a Saffroncoin address (e.g. 1NS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</source>
+        <translation>Vul een Saffroncoinadres in (bijv. 1NS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</translation>
     </message>
     <message>
         <location line="-2"/>
@@ -1575,8 +1575,8 @@ Adres: %4
     </message>
     <message>
         <location line="+3"/>
-        <source>Enter Desicoin signature</source>
-        <translation>Voer Desicoin-handtekening in</translation>
+        <source>Enter Saffroncoin signature</source>
+        <translation>Voer Saffroncoin-handtekening in</translation>
     </message>
     <message>
         <location line="+82"/>
@@ -1648,9 +1648,9 @@ Adres: %4
 <context>
     <name>SplashScreen</name>
     <message>
-        <location filename="../splashscreen.cpp" line="+22"/>
-        <source>The Desicoin developers</source>
-        <translation>De Desicoin-ontwikkelaars</translation>
+        <location filename="../splashscreen.cpp" line="+25"/>
+        <source>The Saffroncoin developers</source>
+        <translation>De Saffroncoin-ontwikkelaars</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -2187,8 +2187,8 @@ Adres: %4
     <name>bitcoin-core</name>
     <message>
         <location filename="../bitcoinstrings.cpp" line="+94"/>
-        <source>Desicoin version</source>
-        <translation>Desicoinversie</translation>
+        <source>Saffroncoin version</source>
+        <translation>Saffroncoinversie</translation>
     </message>
     <message>
         <location line="+102"/>
@@ -2197,8 +2197,8 @@ Adres: %4
     </message>
     <message>
         <location line="-29"/>
-        <source>Send command to -server or desicoind</source>
-        <translation>Stuur commando naar -server of desicoind</translation>
+        <source>Send command to -server or saffroncoind</source>
+        <translation>Stuur commando naar -server of saffroncoind</translation>
     </message>
     <message>
         <location line="-23"/>
@@ -2217,14 +2217,14 @@ Adres: %4
     </message>
     <message>
         <location line="+24"/>
-        <source>Specify configuration file (default: desicoin.conf)</source>
-        <translation>Specificeer configuratiebestand (standaard: desicoin.conf)
+        <source>Specify configuration file (default: saffroncoin.conf)</source>
+        <translation>Specificeer configuratiebestand (standaard: saffroncoin.conf)
 </translation>
     </message>
     <message>
         <location line="+3"/>
-        <source>Specify pid file (default: desicoind.pid)</source>
-        <translation>Specificeer pid-bestand (standaard: desicoind.pid)
+        <source>Specify pid file (default: saffroncoind.pid)</source>
+        <translation>Specificeer pid-bestand (standaard: saffroncoind.pid)
 </translation>
     </message>
     <message>
@@ -2239,8 +2239,8 @@ Adres: %4
     </message>
     <message>
         <location line="-28"/>
-        <source>Listen for connections on &lt;port&gt; (default: 5711 or testnet: 45710)</source>
-        <translation>Luister voor verbindingen op &lt;poort&gt; (standaard: 5711 of testnet: 45710)</translation>
+        <source>Listen for connections on &lt;port&gt; (default: 8333 or testnet: 18333)</source>
+        <translation>Luister voor verbindingen op &lt;poort&gt; (standaard: 8333 of testnet: 18333)</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -2274,8 +2274,8 @@ Adres: %4
     </message>
     <message>
         <location line="+27"/>
-        <source>Listen for JSON-RPC connections on &lt;port&gt; (default: 9332 or testnet: 19332)</source>
-        <translation>Wacht op JSON-RPC-connecties op poort &lt;port&gt; (standaard: 9332 of testnet: 19332)</translation>
+        <source>Listen for JSON-RPC connections on &lt;port&gt; (default: 8332 or testnet: 18332)</source>
+        <translation>Wacht op JSON-RPC-connecties op poort &lt;port&gt; (standaard: 8332 of testnet: 18332)</translation>
     </message>
     <message>
         <location line="+37"/>
@@ -2302,23 +2302,23 @@ Adres: %4
         <source>%s, you must set a rpcpassword in the configuration file:
 %s
 It is recommended you use the following random password:
-rpcuser=desicoinrpc
+rpcuser=saffroncoinrpc
 rpcpassword=%s
 (you do not need to remember this password)
 The username and password MUST NOT be the same.
 If the file does not exist, create it with owner-readable-only file permissions.
 It is also recommended to set alertnotify so you are notified of problems;
-for example: alertnotify=echo %%s | mail -s &quot;Desicoin Alert&quot; admin@foo.com
+for example: alertnotify=echo %%s | mail -s &quot;Saffroncoin Alert&quot; admin@foo.com
 </source>
         <translation>%s, u moet een RPC-wachtwoord instellen in het configuratiebestand: %s
 U wordt aangeraden het volgende willekeurige wachtwoord te gebruiken:
-rpcuser=desicoinrpc
+rpcuser=saffroncoinrpc
 rpcpassword=%s
 (u hoeft dit wachtwoord niet te onthouden)
 De gebruikersnaam en wachtwoord mogen niet hetzelfde zijn.
 Als het bestand niet bestaat, make hem dan aan met leesrechten voor enkel de eigenaar.
 Het is ook aan te bevelen &quot;alertnotify&quot; in te stellen zodat u op de hoogte gesteld wordt van problemen;
-for example: alertnotify=echo %%s | mail -s &quot;Desicoin Alert&quot; admin@foo.com</translation>
+for example: alertnotify=echo %%s | mail -s &quot;Saffroncoin Alert&quot; admin@foo.com</translation>
     </message>
     <message>
         <location line="+17"/>
@@ -2332,8 +2332,8 @@ for example: alertnotify=echo %%s | mail -s &quot;Desicoin Alert&quot; admin@foo
     </message>
     <message>
         <location line="+3"/>
-        <source>Cannot obtain a lock on data directory %s. Desicoin is probably already running.</source>
-        <translation>Kan geen lock op de datamap %s verkrijgen. Desicoin draait vermoedelijk reeds.</translation>
+        <source>Cannot obtain a lock on data directory %s. Saffroncoin is probably already running.</source>
+        <translation>Kan geen lock op de datamap %s verkrijgen. Saffroncoin draait vermoedelijk reeds.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -2377,8 +2377,8 @@ for example: alertnotify=echo %%s | mail -s &quot;Desicoin Alert&quot; admin@foo
     </message>
     <message>
         <location line="+3"/>
-        <source>Warning: Please check that your computer&apos;s date and time are correct! If your clock is wrong Desicoin will not work properly.</source>
-        <translation>Waarschuwing: Controleer dat de datum en tijd op uw computer correct zijn ingesteld. Als uw klok fout staat zal Desicoin niet correct werken.</translation>
+        <source>Warning: Please check that your computer&apos;s date and time are correct! If your clock is wrong Saffroncoin will not work properly.</source>
+        <translation>Waarschuwing: Controleer dat de datum en tijd op uw computer correct zijn ingesteld. Als uw klok fout staat zal Saffroncoin niet correct werken.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -2627,8 +2627,8 @@ for example: alertnotify=echo %%s | mail -s &quot;Desicoin Alert&quot; admin@foo
     </message>
     <message>
         <location line="+5"/>
-        <source>SSL options: (see the Desicoin Wiki for SSL setup instructions)</source>
-        <translation>SSL-opties: (zie de Desicoin wiki voor SSL-instructies)</translation>
+        <source>SSL options: (see the Saffroncoin Wiki for SSL setup instructions)</source>
+        <translation>SSL-opties: (zie de Saffroncoin wiki voor SSL-instructies)</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -2817,13 +2817,13 @@ for example: alertnotify=echo %%s | mail -s &quot;Desicoin Alert&quot; admin@foo
     </message>
     <message>
         <location line="+1"/>
-        <source>Error loading wallet.dat: Wallet requires newer version of Desicoin</source>
-        <translation>Fout bij laden wallet.dat: Portemonnee vereist een nieuwere versie van Desicoin</translation>
+        <source>Error loading wallet.dat: Wallet requires newer version of Saffroncoin</source>
+        <translation>Fout bij laden wallet.dat: Portemonnee vereist een nieuwere versie van Saffroncoin</translation>
     </message>
     <message>
         <location line="+93"/>
-        <source>Wallet needed to be rewritten: restart Desicoin to complete</source>
-        <translation>Portemonnee moest herschreven worden: Herstart Desicoin om te voltooien</translation>
+        <source>Wallet needed to be rewritten: restart Saffroncoin to complete</source>
+        <translation>Portemonnee moest herschreven worden: Herstart Saffroncoin om te voltooien</translation>
     </message>
     <message>
         <location line="-95"/>
@@ -2882,8 +2882,8 @@ for example: alertnotify=echo %%s | mail -s &quot;Desicoin Alert&quot; admin@foo
     </message>
     <message>
         <location line="-25"/>
-        <source>Unable to bind to %s on this computer. Desicoin is probably already running.</source>
-        <translation>Niet in staat om aan %s te binden op deze computer. Desicoin draait vermoedelijk reeds.</translation>
+        <source>Unable to bind to %s on this computer. Saffroncoin is probably already running.</source>
+        <translation>Niet in staat om aan %s te binden op deze computer. Saffroncoin draait vermoedelijk reeds.</translation>
     </message>
     <message>
         <location line="+64"/>

@@ -4,13 +4,13 @@
     <name>AboutDialog</name>
     <message>
         <location filename="../forms/aboutdialog.ui" line="+14"/>
-        <source>About Desicoin</source>
-        <translation>Despre Desicoin</translation>
+        <source>About Saffroncoin</source>
+        <translation>Despre Saffroncoin</translation>
     </message>
     <message>
         <location line="+39"/>
-        <source>&lt;b&gt;Desicoin&lt;/b&gt; version</source>
-        <translation>&lt;b&gt;Desicoin&lt;/b&gt; versiunea</translation>
+        <source>&lt;b&gt;Saffroncoin&lt;/b&gt; version</source>
+        <translation>&lt;b&gt;Saffroncoin&lt;/b&gt; versiunea</translation>
     </message>
     <message>
         <location line="+57"/>
@@ -29,7 +29,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="+0"/>
-        <source>The Desicoin developers</source>
+        <source>The Saffroncoin developers</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -62,8 +62,8 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location filename="../addressbookpage.cpp" line="+63"/>
-        <source>These are your Desicoin addresses for receiving payments. You may want to give a different one to each sender so you can keep track of who is paying you.</source>
-        <translation>Acestea sunt adresele dumneavoastră Desicoin pentru a primi plăţi. Dacă doriţi, puteți da o adresa diferită fiecărui expeditor, pentru a putea ţine evidenţa plăţilor.</translation>
+        <source>These are your Saffroncoin addresses for receiving payments. You may want to give a different one to each sender so you can keep track of who is paying you.</source>
+        <translation>Acestea sunt adresele dumneavoastră Saffroncoin pentru a primi plăţi. Dacă doriţi, puteți da o adresa diferită fiecărui expeditor, pentru a putea ţine evidenţa plăţilor.</translation>
     </message>
     <message>
         <location filename="../forms/addressbookpage.ui" line="+14"/>
@@ -77,7 +77,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="+11"/>
-        <source>Sign a message to prove you own a Desicoin address</source>
+        <source>Sign a message to prove you own a Saffroncoin address</source>
         <translation>Semneaza mesajul pentru a dovedi ca detii aceasta adresa Bitocin</translation>
     </message>
     <message>
@@ -102,8 +102,8 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="-44"/>
-        <source>Verify a message to ensure it was signed with a specified Desicoin address</source>
-        <translation>Verifica mesajul pentru a te asigura ca a fost insemnat cu o adresa desicoin specifica</translation>
+        <source>Verify a message to ensure it was signed with a specified Saffroncoin address</source>
+        <translation>Verifica mesajul pentru a te asigura ca a fost insemnat cu o adresa saffroncoin specifica</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -117,7 +117,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location filename="../addressbookpage.cpp" line="-5"/>
-        <source>These are your Desicoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <source>These are your Saffroncoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -243,8 +243,8 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="+1"/>
-        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR DESICOINS&lt;/b&gt;!</source>
-        <translation>Atenție: Dacă pierdeţi parola portofelului electronic dupa criptare, &lt;b&gt;VEŢI PIERDE ÎNTREAGA SUMĂ DE DESICOIN ACUMULATĂ&lt;/b&gt;!</translation>
+        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR SAFFRONCOINS&lt;/b&gt;!</source>
+        <translation>Atenție: Dacă pierdeţi parola portofelului electronic dupa criptare, &lt;b&gt;VEŢI PIERDE ÎNTREAGA SUMĂ DE SAFFRONCOIN ACUMULATĂ&lt;/b&gt;!</translation>
     </message>
     <message>
         <location line="+0"/>
@@ -270,8 +270,8 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="-56"/>
-        <source>Desicoin will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your desicoins from being stolen by malware infecting your computer.</source>
-        <translation>Desicoin se va închide acum pentru a termina procesul de criptare. Amintiți-vă că criptarea portofelului dumneavoastră nu poate proteja în totalitate desicoins dvs. de a fi furate de intentii rele.</translation>
+        <source>Saffroncoin will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your saffroncoins from being stolen by malware infecting your computer.</source>
+        <translation>Saffroncoin se va închide acum pentru a termina procesul de criptare. Amintiți-vă că criptarea portofelului dumneavoastră nu poate proteja în totalitate saffroncoins dvs. de a fi furate de intentii rele.</translation>
     </message>
     <message>
         <location line="+13"/>
@@ -369,8 +369,8 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="+4"/>
-        <source>Show information about Desicoin</source>
-        <translation>Informaţii despre Desicoin</translation>
+        <source>Show information about Saffroncoin</source>
+        <translation>Informaţii despre Saffroncoin</translation>
     </message>
     <message>
         <location line="+2"/>
@@ -414,13 +414,13 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="-347"/>
-        <source>Send coins to a Desicoin address</source>
-        <translation>&amp;Trimiteţi Desicoin către o anumită adresă</translation>
+        <source>Send coins to a Saffroncoin address</source>
+        <translation>&amp;Trimiteţi Saffroncoin către o anumită adresă</translation>
     </message>
     <message>
         <location line="+49"/>
-        <source>Modify configuration options for Desicoin</source>
-        <translation>Modifică setările pentru Desicoin</translation>
+        <source>Modify configuration options for Saffroncoin</source>
+        <translation>Modifică setările pentru Saffroncoin</translation>
     </message>
     <message>
         <location line="+9"/>
@@ -450,8 +450,8 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="-165"/>
         <location line="+530"/>
-        <source>Desicoin</source>
-        <translation>Desicoin</translation>
+        <source>Saffroncoin</source>
+        <translation>Saffroncoin</translation>
     </message>
     <message>
         <location line="-530"/>
@@ -475,8 +475,8 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="+22"/>
-        <source>&amp;About Desicoin</source>
-        <translation>&amp;Despre Desicoin</translation>
+        <source>&amp;About Saffroncoin</source>
+        <translation>&amp;Despre Saffroncoin</translation>
     </message>
     <message>
         <location line="+9"/>
@@ -495,12 +495,12 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="+7"/>
-        <source>Sign messages with your Desicoin addresses to prove you own them</source>
+        <source>Sign messages with your Saffroncoin addresses to prove you own them</source>
         <translation type="unfinished"/>
     </message>
     <message>
         <location line="+2"/>
-        <source>Verify messages to ensure they were signed with specified Desicoin addresses</source>
+        <source>Verify messages to ensure they were signed with specified Saffroncoin addresses</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -531,13 +531,13 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="+47"/>
-        <source>Desicoin client</source>
-        <translation>Client Desicoin</translation>
+        <source>Saffroncoin client</source>
+        <translation>Client Saffroncoin</translation>
     </message>
     <message numerus="yes">
         <location line="+141"/>
-        <source>%n active connection(s) to Desicoin network</source>
-        <translation><numerusform>%n active connections to Desicoin network</numerusform><numerusform>%n active connections to Desicoin network</numerusform><numerusform>%n active connections to Desicoin network</numerusform></translation>
+        <source>%n active connection(s) to Saffroncoin network</source>
+        <translation><numerusform>%n active connections to Saffroncoin network</numerusform><numerusform>%n active connections to Saffroncoin network</numerusform><numerusform>%n active connections to Saffroncoin network</numerusform></translation>
     </message>
     <message>
         <location line="+22"/>
@@ -647,7 +647,7 @@ Address: %4
     <message>
         <location line="-23"/>
         <location line="+23"/>
-        <source>URI can not be parsed! This can be caused by an invalid Desicoin address or malformed URI parameters.</source>
+        <source>URI can not be parsed! This can be caused by an invalid Saffroncoin address or malformed URI parameters.</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -662,7 +662,7 @@ Address: %4
     </message>
     <message>
         <location filename="../bitcoin.cpp" line="+111"/>
-        <source>A fatal error occurred. Desicoin can no longer continue safely and will quit.</source>
+        <source>A fatal error occurred. Saffroncoin can no longer continue safely and will quit.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -728,8 +728,8 @@ Address: %4
     </message>
     <message>
         <location line="-5"/>
-        <source>The entered address &quot;%1&quot; is not a valid Desicoin address.</source>
-        <translation>Adresa introdusă &quot;%1&quot; nu este o adresă desicoin valabilă.</translation>
+        <source>The entered address &quot;%1&quot; is not a valid Saffroncoin address.</source>
+        <translation>Adresa introdusă &quot;%1&quot; nu este o adresă saffroncoin valabilă.</translation>
     </message>
     <message>
         <location line="+10"/>
@@ -747,8 +747,8 @@ Address: %4
     <message>
         <location filename="../guiutil.cpp" line="+424"/>
         <location line="+12"/>
-        <source>Desicoin-Qt</source>
-        <translation>Desicoin-Qt</translation>
+        <source>Saffroncoin-Qt</source>
+        <translation>Saffroncoin-Qt</translation>
     </message>
     <message>
         <location line="-12"/>
@@ -810,13 +810,13 @@ Address: %4
     </message>
     <message>
         <location line="+31"/>
-        <source>Automatically start Desicoin after logging in to the system.</source>
-        <translation>Porneşte automat programul Desicoin la pornirea computerului.</translation>
+        <source>Automatically start Saffroncoin after logging in to the system.</source>
+        <translation>Porneşte automat programul Saffroncoin la pornirea computerului.</translation>
     </message>
     <message>
         <location line="+3"/>
-        <source>&amp;Start Desicoin on system login</source>
-        <translation>&amp;S Porneşte Desicoin la pornirea sistemului</translation>
+        <source>&amp;Start Saffroncoin on system login</source>
+        <translation>&amp;S Porneşte Saffroncoin la pornirea sistemului</translation>
     </message>
     <message>
         <location line="+35"/>
@@ -835,8 +835,8 @@ Address: %4
     </message>
     <message>
         <location line="+6"/>
-        <source>Automatically open the Desicoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>Deschide automat în router portul aferent clientului Desicoin. Funcţionează doar în cazul în care routerul e compatibil UPnP şi opţiunea e activată.</translation>
+        <source>Automatically open the Saffroncoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <translation>Deschide automat în router portul aferent clientului Saffroncoin. Funcţionează doar în cazul în care routerul e compatibil UPnP şi opţiunea e activată.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -845,8 +845,8 @@ Address: %4
     </message>
     <message>
         <location line="+7"/>
-        <source>Connect to the Desicoin network through a SOCKS proxy (e.g. when connecting through Tor).</source>
-        <translation>Conectare la reţeaua Desicoin folosind un proxy SOCKS (de exemplu, când conexiunea se stabileşte prin reţeaua Tor)</translation>
+        <source>Connect to the Saffroncoin network through a SOCKS proxy (e.g. when connecting through Tor).</source>
+        <translation>Conectare la reţeaua Saffroncoin folosind un proxy SOCKS (de exemplu, când conexiunea se stabileşte prin reţeaua Tor)</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -920,8 +920,8 @@ Address: %4
     </message>
     <message>
         <location line="+13"/>
-        <source>The user interface language can be set here. This setting will take effect after restarting Desicoin.</source>
-        <translation>Limba interfeței utilizatorului poate fi setat aici. Această setare va avea efect după repornirea Desicoin.</translation>
+        <source>The user interface language can be set here. This setting will take effect after restarting Saffroncoin.</source>
+        <translation>Limba interfeței utilizatorului poate fi setat aici. Această setare va avea efect după repornirea Saffroncoin.</translation>
     </message>
     <message>
         <location line="+11"/>
@@ -931,12 +931,12 @@ Address: %4
     <message>
         <location line="+13"/>
         <source>Choose the default subdivision unit to show in the interface and when sending coins.</source>
-        <translation>Alege subdiviziunea folosită la afişarea interfeţei şi la trimiterea de desicoin.</translation>
+        <translation>Alege subdiviziunea folosită la afişarea interfeţei şi la trimiterea de saffroncoin.</translation>
     </message>
     <message>
         <location line="+9"/>
-        <source>Whether to show Desicoin addresses in the transaction list or not.</source>
-        <translation>Vezi dacă adresele Desicoin sunt în lista de tranzacție sau nu</translation>
+        <source>Whether to show Saffroncoin addresses in the transaction list or not.</source>
+        <translation>Vezi dacă adresele Saffroncoin sunt în lista de tranzacție sau nu</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -987,13 +987,13 @@ Address: %4
     <message>
         <location line="-9"/>
         <location line="+9"/>
-        <source>This setting will take effect after restarting Desicoin.</source>
+        <source>This setting will take effect after restarting Saffroncoin.</source>
         <translation type="unfinished"/>
     </message>
     <message>
         <location line="+29"/>
         <source>The supplied proxy address is invalid.</source>
-        <translation>Adresa desicoin pe care a-ti specificat-o este invalida</translation>
+        <translation>Adresa saffroncoin pe care a-ti specificat-o este invalida</translation>
     </message>
 </context>
 <context>
@@ -1006,8 +1006,8 @@ Address: %4
     <message>
         <location line="+50"/>
         <location line="+166"/>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Desicoin network after a connection is established, but this process has not completed yet.</source>
-        <translation>Informațiile afișate pot fi expirate. Portofelul tău se sincronizează automat cu rețeaua Desicoin după ce o conexiune este stabilita, dar acest proces nu a fost finalizat încă.</translation>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Saffroncoin network after a connection is established, but this process has not completed yet.</source>
+        <translation>Informațiile afișate pot fi expirate. Portofelul tău se sincronizează automat cu rețeaua Saffroncoin după ce o conexiune este stabilita, dar acest proces nu a fost finalizat încă.</translation>
     </message>
     <message>
         <location line="-124"/>
@@ -1060,7 +1060,7 @@ Address: %4
     <name>PaymentServer</name>
     <message>
         <location filename="../paymentserver.cpp" line="+107"/>
-        <source>Cannot start desicoin: click-to-pay handler</source>
+        <source>Cannot start saffroncoin: click-to-pay handler</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1210,8 +1210,8 @@ Address: %4
     </message>
     <message>
         <location line="+7"/>
-        <source>Show the Desicoin-Qt help message to get a list with possible Desicoin command-line options.</source>
-        <translation>Arata mesajul de ajutor Desicoin-QT pentru a obtine o lista cu posibilele optiuni ale comenzilor Desicoin</translation>
+        <source>Show the Saffroncoin-Qt help message to get a list with possible Saffroncoin command-line options.</source>
+        <translation>Arata mesajul de ajutor Saffroncoin-QT pentru a obtine o lista cu posibilele optiuni ale comenzilor Saffroncoin</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1230,13 +1230,13 @@ Address: %4
     </message>
     <message>
         <location line="-104"/>
-        <source>Desicoin - Debug window</source>
-        <translation>Desicoin-Fereastra pentru debug</translation>
+        <source>Saffroncoin - Debug window</source>
+        <translation>Saffroncoin-Fereastra pentru debug</translation>
     </message>
     <message>
         <location line="+25"/>
-        <source>Desicoin Core</source>
-        <translation>Desicoin Core</translation>
+        <source>Saffroncoin Core</source>
+        <translation>Saffroncoin Core</translation>
     </message>
     <message>
         <location line="+279"/>
@@ -1245,7 +1245,7 @@ Address: %4
     </message>
     <message>
         <location line="+7"/>
-        <source>Open the Desicoin debug log file from the current data directory. This can take a few seconds for large log files.</source>
+        <source>Open the Saffroncoin debug log file from the current data directory. This can take a few seconds for large log files.</source>
         <translation>Deschide logurile debug din directorul curent. Aceasta poate dura cateva secunde pentru fisierele mai mari</translation>
     </message>
     <message>
@@ -1255,8 +1255,8 @@ Address: %4
     </message>
     <message>
         <location filename="../rpcconsole.cpp" line="-30"/>
-        <source>Welcome to the Desicoin RPC console.</source>
-        <translation>Bun venit la consola desicoin RPC</translation>
+        <source>Welcome to the Saffroncoin RPC console.</source>
+        <translation>Bun venit la consola saffroncoin RPC</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -1281,7 +1281,7 @@ Address: %4
         <location line="+5"/>
         <location line="+5"/>
         <source>Send Coins</source>
-        <translation>Trimite Desicoin</translation>
+        <translation>Trimite Saffroncoin</translation>
     </message>
     <message>
         <location line="+50"/>
@@ -1331,7 +1331,7 @@ Address: %4
     <message>
         <location line="+5"/>
         <source>Confirm send coins</source>
-        <translation>Confirmaţi trimiterea de desicoin</translation>
+        <translation>Confirmaţi trimiterea de saffroncoin</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -1376,7 +1376,7 @@ Address: %4
     <message>
         <location line="+5"/>
         <source>Error: The transaction was rejected. This might happen if some of the coins in your wallet were already spent, such as if you used a copy of wallet.dat and coins were spent in the copy but not marked as spent here.</source>
-        <translation>Eroare: Tranyacţia a fost respinsă.  Acesta poate fi rezultatul cheltuirii prealabile a unei sume de desicoin din portofelul electronic, ca în cazul folosirii unei copii a fisierului wallet.dat, în care s-au efectuat tranzacţii neînregistrate în fisierul curent.</translation>
+        <translation>Eroare: Tranyacţia a fost respinsă.  Acesta poate fi rezultatul cheltuirii prealabile a unei sume de saffroncoin din portofelul electronic, ca în cazul folosirii unei copii a fisierului wallet.dat, în care s-au efectuat tranzacţii neînregistrate în fisierul curent.</translation>
     </message>
 </context>
 <context>
@@ -1398,7 +1398,7 @@ Address: %4
     </message>
     <message>
         <location line="+34"/>
-        <source>The address to send the payment to (e.g. Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</source>
+        <source>The address to send the payment to (e.g. 1NS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -1439,8 +1439,8 @@ Address: %4
     </message>
     <message>
         <location filename="../sendcoinsentry.cpp" line="+1"/>
-        <source>Enter a Desicoin address (e.g. Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</source>
-        <translation>Introduceţi o adresă Desicoin (de exemplu: Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</translation>
+        <source>Enter a Saffroncoin address (e.g. 1NS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</source>
+        <translation>Introduceţi o adresă Saffroncoin (de exemplu: 1NS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</translation>
     </message>
 </context>
 <context>
@@ -1462,8 +1462,8 @@ Address: %4
     </message>
     <message>
         <location line="+18"/>
-        <source>The address to sign the message with (e.g. Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</source>
-        <translation>Introduceţi o adresă Desicoin (de exemplu: Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</translation>
+        <source>The address to sign the message with (e.g. 1NS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</source>
+        <translation>Introduceţi o adresă Saffroncoin (de exemplu: 1NS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</translation>
     </message>
     <message>
         <location line="+10"/>
@@ -1504,8 +1504,8 @@ Address: %4
     </message>
     <message>
         <location line="+21"/>
-        <source>Sign the message to prove you own this Desicoin address</source>
-        <translation>Semneaza mesajul pentru a dovedi ca detii acesta adresa Desicoin</translation>
+        <source>Sign the message to prove you own this Saffroncoin address</source>
+        <translation>Semneaza mesajul pentru a dovedi ca detii acesta adresa Saffroncoin</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1535,13 +1535,13 @@ Address: %4
     </message>
     <message>
         <location line="+21"/>
-        <source>The address the message was signed with (e.g. Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</source>
-        <translation>Introduceţi o adresă Desicoin (de exemplu: Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</translation>
+        <source>The address the message was signed with (e.g. 1NS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</source>
+        <translation>Introduceţi o adresă Saffroncoin (de exemplu: 1NS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</translation>
     </message>
     <message>
         <location line="+40"/>
-        <source>Verify the message to ensure it was signed with the specified Desicoin address</source>
-        <translation>Verifica mesajul pentru a fi sigur ca a fost semnat cu adresa Desicoin specifica</translation>
+        <source>Verify the message to ensure it was signed with the specified Saffroncoin address</source>
+        <translation>Verifica mesajul pentru a fi sigur ca a fost semnat cu adresa Saffroncoin specifica</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1556,8 +1556,8 @@ Address: %4
     <message>
         <location filename="../signverifymessagedialog.cpp" line="+27"/>
         <location line="+3"/>
-        <source>Enter a Desicoin address (e.g. Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</source>
-        <translation>Introduceţi o adresă Desicoin (de exemplu: Ler4HNAEfwYhBmGXcFP2Po1NpRUEiK8km2)</translation>
+        <source>Enter a Saffroncoin address (e.g. 1NS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</source>
+        <translation>Introduceţi o adresă Saffroncoin (de exemplu: 1NS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</translation>
     </message>
     <message>
         <location line="-2"/>
@@ -1566,7 +1566,7 @@ Address: %4
     </message>
     <message>
         <location line="+3"/>
-        <source>Enter Desicoin signature</source>
+        <source>Enter Saffroncoin signature</source>
         <translation>Introduce semnatura bitocin</translation>
     </message>
     <message>
@@ -1639,8 +1639,8 @@ Address: %4
 <context>
     <name>SplashScreen</name>
     <message>
-        <location filename="../splashscreen.cpp" line="+22"/>
-        <source>The Desicoin developers</source>
+        <location filename="../splashscreen.cpp" line="+25"/>
+        <source>The Saffroncoin developers</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -1775,7 +1775,7 @@ Address: %4
     <message>
         <location line="+3"/>
         <source>Generated coins must mature 120 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to &quot;not accepted&quot; and it won&apos;t be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</source>
-        <translation>Monedele desicoin generate se pot cheltui dupa parcurgerea a 120 de blocuri.  După ce a fost generat, s-a propagat în reţea, urmând să fie adăugat lanţului de blocuri.  Dacă nu poate fi inclus in lanţ, starea sa va deveni &quot;neacceptat&quot; si nu va putea fi folosit la tranzacţii.  Acest fenomen se întâmplă atunci cand un alt nod a generat un bloc la o diferenţa de câteva secunde.</translation>
+        <translation>Monedele saffroncoin generate se pot cheltui dupa parcurgerea a 120 de blocuri.  După ce a fost generat, s-a propagat în reţea, urmând să fie adăugat lanţului de blocuri.  Dacă nu poate fi inclus in lanţ, starea sa va deveni &quot;neacceptat&quot; si nu va putea fi folosit la tranzacţii.  Acest fenomen se întâmplă atunci cand un alt nod a generat un bloc la o diferenţa de câteva secunde.</translation>
     </message>
     <message>
         <location line="+7"/>
@@ -2128,7 +2128,7 @@ Address: %4
     <message>
         <location filename="../walletmodel.cpp" line="+193"/>
         <source>Send Coins</source>
-        <translation>Trimite Desicoin</translation>
+        <translation>Trimite Saffroncoin</translation>
     </message>
 </context>
 <context>
@@ -2178,8 +2178,8 @@ Address: %4
     <name>bitcoin-core</name>
     <message>
         <location filename="../bitcoinstrings.cpp" line="+94"/>
-        <source>Desicoin version</source>
-        <translation>versiunea Desicoin</translation>
+        <source>Saffroncoin version</source>
+        <translation>versiunea Saffroncoin</translation>
     </message>
     <message>
         <location line="+102"/>
@@ -2188,8 +2188,8 @@ Address: %4
     </message>
     <message>
         <location line="-29"/>
-        <source>Send command to -server or desicoind</source>
-        <translation>Trimite comanda la -server sau desicoind</translation>
+        <source>Send command to -server or saffroncoind</source>
+        <translation>Trimite comanda la -server sau saffroncoind</translation>
     </message>
     <message>
         <location line="-23"/>
@@ -2208,12 +2208,12 @@ Address: %4
     </message>
     <message>
         <location line="+24"/>
-        <source>Specify configuration file (default: desicoin.conf)</source>
-        <translation>Specifica-ți configurația fisierului (in mod normal: desicoin.conf)</translation>
+        <source>Specify configuration file (default: saffroncoin.conf)</source>
+        <translation>Specifica-ți configurația fisierului (in mod normal: saffroncoin.conf)</translation>
     </message>
     <message>
         <location line="+3"/>
-        <source>Specify pid file (default: desicoind.pid)</source>
+        <source>Specify pid file (default: saffroncoind.pid)</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -2228,8 +2228,8 @@ Address: %4
     </message>
     <message>
         <location line="-28"/>
-        <source>Listen for connections on &lt;port&gt; (default: 5711 or testnet: 45710)</source>
-        <translation>Lista a conectiunile in &lt;port&gt; (initial:  5711 sau testnet: 45710)</translation>
+        <source>Listen for connections on &lt;port&gt; (default: 8333 or testnet: 18333)</source>
+        <translation>Lista a conectiunile in &lt;port&gt; (initial:  8333 sau testnet: 18333)</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -2263,7 +2263,7 @@ Address: %4
     </message>
     <message>
         <location line="+27"/>
-        <source>Listen for JSON-RPC connections on &lt;port&gt; (default: 9332 or testnet: 19332)</source>
+        <source>Listen for JSON-RPC connections on &lt;port&gt; (default: 8332 or testnet: 18332)</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -2292,13 +2292,13 @@ Address: %4
         <source>%s, you must set a rpcpassword in the configuration file:
 %s
 It is recommended you use the following random password:
-rpcuser=desicoinrpc
+rpcuser=saffroncoinrpc
 rpcpassword=%s
 (you do not need to remember this password)
 The username and password MUST NOT be the same.
 If the file does not exist, create it with owner-readable-only file permissions.
 It is also recommended to set alertnotify so you are notified of problems;
-for example: alertnotify=echo %%s | mail -s &quot;Desicoin Alert&quot; admin@foo.com
+for example: alertnotify=echo %%s | mail -s &quot;Saffroncoin Alert&quot; admin@foo.com
 </source>
         <translation type="unfinished"/>
     </message>
@@ -2314,7 +2314,7 @@ for example: alertnotify=echo %%s | mail -s &quot;Desicoin Alert&quot; admin@foo
     </message>
     <message>
         <location line="+3"/>
-        <source>Cannot obtain a lock on data directory %s. Desicoin is probably already running.</source>
+        <source>Cannot obtain a lock on data directory %s. Saffroncoin is probably already running.</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -2359,7 +2359,7 @@ for example: alertnotify=echo %%s | mail -s &quot;Desicoin Alert&quot; admin@foo
     </message>
     <message>
         <location line="+3"/>
-        <source>Warning: Please check that your computer&apos;s date and time are correct! If your clock is wrong Desicoin will not work properly.</source>
+        <source>Warning: Please check that your computer&apos;s date and time are correct! If your clock is wrong Saffroncoin will not work properly.</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -2609,8 +2609,8 @@ for example: alertnotify=echo %%s | mail -s &quot;Desicoin Alert&quot; admin@foo
     </message>
     <message>
         <location line="+5"/>
-        <source>SSL options: (see the Desicoin Wiki for SSL setup instructions)</source>
-        <translation>Optiuni SSl (vezi Desicoin wiki pentru intructiunile de instalare)</translation>
+        <source>SSL options: (see the Saffroncoin Wiki for SSL setup instructions)</source>
+        <translation>Optiuni SSl (vezi Saffroncoin wiki pentru intructiunile de instalare)</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -2801,13 +2801,13 @@ for example: alertnotify=echo %%s | mail -s &quot;Desicoin Alert&quot; admin@foo
     </message>
     <message>
         <location line="+1"/>
-        <source>Error loading wallet.dat: Wallet requires newer version of Desicoin</source>
-        <translation>Eroare incarcare wallet.dat: Portofelul are nevoie de o versiune Desicoin mai noua</translation>
+        <source>Error loading wallet.dat: Wallet requires newer version of Saffroncoin</source>
+        <translation>Eroare incarcare wallet.dat: Portofelul are nevoie de o versiune Saffroncoin mai noua</translation>
     </message>
     <message>
         <location line="+93"/>
-        <source>Wallet needed to be rewritten: restart Desicoin to complete</source>
-        <translation>Portofelul trebuie rescris: restarteaza aplicatia desicoin pentru a face asta.</translation>
+        <source>Wallet needed to be rewritten: restart Saffroncoin to complete</source>
+        <translation>Portofelul trebuie rescris: restarteaza aplicatia saffroncoin pentru a face asta.</translation>
     </message>
     <message>
         <location line="-95"/>
@@ -2868,8 +2868,8 @@ details suggestions history
     </message>
     <message>
         <location line="-25"/>
-        <source>Unable to bind to %s on this computer. Desicoin is probably already running.</source>
-        <translation>Imposibilitatea de a lega la% s pe acest computer. Desicoin este, probabil, deja în execuție.</translation>
+        <source>Unable to bind to %s on this computer. Saffroncoin is probably already running.</source>
+        <translation>Imposibilitatea de a lega la% s pe acest computer. Saffroncoin este, probabil, deja în execuție.</translation>
     </message>
     <message>
         <location line="+64"/>

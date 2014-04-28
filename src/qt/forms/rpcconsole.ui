@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Desicoin - Debug window</string>
+   <string>Saffroncoin - Debug window</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
    <item>
@@ -36,7 +36,7 @@
           </font>
          </property>
          <property name="text">
-          <string>Desicoin Core</string>
+          <string>Saffroncoin Core</string>
          </property>
         </widget>
        </item>
@@ -322,7 +322,7 @@
        <item row="15" column="0">
         <widget class="QPushButton" name="openDebugLogfileButton">
          <property name="toolTip">
-          <string>Open the Desicoin debug log file from the current data directory. This can take a few seconds for large log files.</string>
+          <string>Open the Saffroncoin debug log file from the current data directory. This can take a few seconds for large log files.</string>
          </property>
          <property name="text">
           <string>&amp;Open</string>
@@ -348,7 +348,7 @@
        <item row="17" column="0">
         <widget class="QPushButton" name="showCLOptionsButton">
          <property name="toolTip">
-          <string>Show the Desicoin-Qt help message to get a list with possible Desicoin command-line options.</string>
+          <string>Show the Saffroncoin-Qt help message to get a list with possible Saffroncoin command-line options.</string>
          </property>
          <property name="text">
           <string>&amp;Show</string>

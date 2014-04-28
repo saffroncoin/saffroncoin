@@ -35,7 +35,6 @@ typedef unsigned long long  uint64;
 static const int64 COIN = 100000000;
 static const int64 CENT = 1000000;
 
-//#define loop                for (;;)
 #define BEGIN(a)            ((char*)&(a))
 #define END(a)              ((char*)&((&(a))[1]))
 #define UBEGIN(a)           ((unsigned char*)&(a))
@@ -143,8 +142,6 @@ extern bool fDaemon;
 extern bool fServer;
 extern bool fCommandLine;
 extern std::string strMiscWarning;
-extern bool fTestNet;
-extern bool fBloomFilters;
 extern bool fNoListen;
 extern bool fLogTimestamps;
 extern volatile bool fReopenDebugLog;
@@ -186,7 +183,6 @@ void ParseString(const std::string& str, char c, std::vector<std::string>& v);
 std::string FormatMoney(int64 n, bool fPlus=false);
 bool ParseMoney(const std::string& str, int64& nRet);
 bool ParseMoney(const char* pszIn, int64& nRet);
-std::string SanitizeString(const std::string& str);
 std::vector<unsigned char> ParseHex(const char* psz);
 std::vector<unsigned char> ParseHex(const std::string& str);
 bool IsHex(const std::string& str);
@@ -211,9 +207,7 @@ boost::filesystem::path GetDefaultDataDir();
 const boost::filesystem::path &GetDataDir(bool fNetSpecific = true);
 boost::filesystem::path GetConfigFile();
 boost::filesystem::path GetPidFile();
-#ifndef WIN32
 void CreatePidFile(const boost::filesystem::path &path, pid_t pid);
-#endif
 void ReadConfigFile(std::map<std::string, std::string>& mapSettingsRet, std::map<std::string, std::vector<std::string> >& mapMultiSettingsRet);
 #ifdef WIN32
 boost::filesystem::path GetSpecialFolderPath(int nFolder, bool fCreate = true);
@@ -227,6 +221,7 @@ int64 GetTime();
 void SetMockTime(int64 nMockTimeIn);
 int64 GetAdjustedTime();
 int64 GetTimeOffset();
+long hex2long(const char* hexString);
 std::string FormatFullVersion();
 std::string FormatSubVersion(const std::string& name, int nClientVersion, const std::vector<std::string>& comments);
 void AddTimeData(const CNetAddr& ip, int64 nTime);
@@ -399,7 +394,7 @@ int64 GetArg(const std::string& strArg, int64 nDefault);
  * @param default (true or false)
  * @return command-line argument or default value
  */
-bool GetBoolArg(const std::string& strArg, bool fDefault=false);
+bool GetBoolArg(const std::string& strArg, bool fDefault);
 
 /**
  * Set an argument if it doesn't already have a value
@@ -440,21 +435,6 @@ static inline uint32_t insecure_rand(void)
  * @param Deterministic Use a determinstic seed
  */
 void seed_insecure_rand(bool fDeterministic=false);
-
-/**
- * Timing-attack-resistant comparison.
- * Takes time proportional to length
- * of first argument.
- */
-template <typename T>
-bool TimingResistantEqual(const T& a, const T& b)
-{
-    if (b.size() == 0) return a.size() == 0;
-    size_t accumulator = a.size() ^ b.size();
-    for (size_t i = 0; i < a.size(); i++)
-        accumulator |= a[i] ^ b[i%b.size()];
-    return accumulator == 0;
-}
 
 /** Median filter over a stream of values.
  * Returns the median of the last N numbers
@@ -512,8 +492,6 @@ public:
     }
 };
 
-bool NewThread(void(*pfn)(void*), void* parg);
-
 #ifdef WIN32
 inline void SetThreadPriority(int nPriority)
 {
@@ -524,7 +502,7 @@ inline void SetThreadPriority(int nPriority)
 #define THREAD_PRIORITY_LOWEST          PRIO_MAX
 #define THREAD_PRIORITY_BELOW_NORMAL    2
 #define THREAD_PRIORITY_NORMAL          0
-#define THREAD_PRIORITY_ABOVE_NORMAL    0
+#define THREAD_PRIORITY_ABOVE_NORMAL    (-2)
 
 inline void SetThreadPriority(int nPriority)
 {
@@ -535,11 +513,6 @@ inline void SetThreadPriority(int nPriority)
 #else
     setpriority(PRIO_PROCESS, 0, nPriority);
 #endif
-}
-
-inline void ExitThread(size_t nExitCode)
-{
-    pthread_exit((void*)nExitCode);
 }
 #endif
 
@@ -606,5 +579,7 @@ template <typename Callable> void TraceThread(const char* name,  Callable func)
         PrintException(NULL, name);
     }
 }
+
+bool NewThread(void(*pfn)(void*), void* parg);
 
 #endif

@@ -83,7 +83,9 @@ OBJS= \
     obj/key.o \
     obj/db.o \
     obj/init.o \
+    obj/bitcoind.o \
     obj/keystore.o \
+    obj/core.o \
     obj/main.o \
     obj/net.o \
     obj/protocol.o \
@@ -104,7 +106,18 @@ OBJS= \
     obj/bloom.o \
     obj/noui.o \
     obj/leveldb.o \
-    obj/txdb.o
+    obj/txdb.o \
+    obj/chainparams.o \
+    obj/blake.o \
+    obj/bmw.o \
+    obj/groestl.o \
+    obj/jh.o \
+    obj/keccak.o \
+    obj/echo.o \
+    obj/luffa.o \
+    obj/simd.o \
+    obj/cubehash.o \
+    obj/shavite.o
 
 ifdef USE_SSE2
 DEFS += -DUSE_SSE2
@@ -112,10 +125,11 @@ OBJS_SSE2= obj/scrypt-sse2.o
 OBJS += $(OBJS_SSE2)
 endif
 
-all: desicoind.exe
 
-test check: test_desicoin.exe FORCE
-	test_desicoin.exe
+all: saffroncoind.exe
+
+test check: test_saffroncoin.exe FORCE
+	test_saffroncoin.exe
 
 #
 # LevelDB support
@@ -126,13 +140,15 @@ DEFS += $(addprefix -I,$(CURDIR)/leveldb/helpers)
 leveldb/libleveldb.a:
 	cd leveldb && $(MAKE) CC=$(CC) CXX=$(CXX) OPT="$(CFLAGS)" TARGET_OS=NATIVE_WINDOWS libleveldb.a libmemenv.a && cd ..
 
-obj/%-sse2.o: %-sse2.cpp
-	$(CXX) -c $(CFLAGS) -msse2 -mstackrealign -o $@ $<
+
 
 obj/%.o: %.cpp $(HEADERS)
 	$(CXX) -c $(CFLAGS) -o $@ $<
 
-desicoind.exe: $(OBJS:obj/%=obj/%)
+obj/%.o: %.c $(HEADERS)
+	$(CXX) -c $(CFLAGS) -fpermissive -o $@ $<
+
+saffroncoind.exe: $(OBJS:obj/%=obj/%)
 	$(CXX) $(CFLAGS) $(LDFLAGS) -o $@ $(LIBPATHS) $^ $(LIBS)
 
 TESTOBJS := $(patsubst test/%.cpp,obj-test/%.o,$(wildcard test/*.cpp))
@@ -140,11 +156,11 @@ TESTOBJS := $(patsubst test/%.cpp,obj-test/%.o,$(wildcard test/*.cpp))
 obj-test/%.o: test/%.cpp $(HEADERS)
 	$(CXX) -c $(TESTDEFS) $(CFLAGS) -o $@ $<
 
-test_desicoin.exe: $(TESTOBJS) $(filter-out obj/init.o,$(OBJS:obj/%=obj/%))
+test_saffroncoin.exe: $(TESTOBJS) $(filter-out obj/init.o obj/saffroncoind.o,$(OBJS:obj/%=obj/%))
 	$(CXX) $(CFLAGS) $(LDFLAGS) -o $@ $(LIBPATHS) $^ -lboost_unit_test_framework$(BOOST_SUFFIX) $(LIBS)
 
 clean:
-	rm -f desicoind.exe test_desicoin.exe
+	rm -f saffroncoind.exe test_saffroncoin.exe
 	rm -f obj/*
 	rm -f obj-test/*
 	cd leveldb && $(MAKE) TARGET_OS=NATIVE_WINDOWS clean && cd ..

@@ -1,4 +1,4 @@
-Desicoin-Qt: Qt4 GUI for Desicoin
+Litecoin-Qt: Qt4 GUI for Litecoin
 ===============================
 
 Build instructions
@@ -18,7 +18,7 @@ for Debian and Ubuntu  <= 11.10 :
 
     apt-get install qt4-qmake libqt4-dev build-essential libboost-dev libboost-system-dev \
         libboost-filesystem-dev libboost-program-options-dev libboost-thread-dev \
-        libssl-dev libdb4.8++-dev libminiupnpc-dev
+        libssl-dev libdb4.8++-dev
 
 for Ubuntu >= 12.04 (please read the 'Berkely DB version warning' below):
 
@@ -41,9 +41,9 @@ then execute the following:
     qmake
     make
 
-Alternatively, install `Qt Creator`_ and open the `desicoin-qt.pro` file.
+Alternatively, install `Qt Creator`_ and open the `dogecoin-qt.pro` file.
 
-An executable named `desicoin-qt` will be built.
+An executable named `dogecoin-qt` will be built.
 
 .. _`Qt Creator`: http://qt-project.org/downloads/
 
@@ -58,21 +58,21 @@ Mac OS X
 
 ::
 
-	sudo port selfupdate
-	sudo port install boost db48 miniupnpc
+  sudo port selfupdate
+  sudo port install boost db48 miniupnpc
 
 - Execute the following commands in a terminal to get the dependencies using HomeBrew:
 
 ::
 
-	brew update
-	brew install boost miniupnpc openssl berkeley-db4
+  brew update
+  brew install boost miniupnpc openssl berkeley-db4
 
-- If using HomeBrew,  edit `desicoin-qt.pro` to account for library location differences. There's a diff in `contrib/homebrew/bitcoin-qt-pro.patch` that shows what you need to change, or you can just patch by doing
+- If using HomeBrew,  edit `dogecoin-qt.pro` to account for library location differences. There's a diff in `contrib/homebrew/bitcoin-qt-pro.patch` that shows what you need to change, or you can just patch by doing
 
         patch -p1 < contrib/homebrew/bitcoin.qt.pro.patch
 
-- Open the desicoin-qt.pro file in Qt Creator and build as normal (cmd-B)
+- Open the dogecoin-qt.pro file in Qt Creator and build as normal (cmd-B)
 
 .. _`Qt Mac OS X SDK`: http://qt-project.org/downloads/
 .. _`MacPorts`: http://www.macports.org/install.php
@@ -85,7 +85,7 @@ Build configuration options
 UPnP port forwarding
 ---------------------
 
-To use UPnP for port forwarding behind a NAT router (recommended, as more connections overall allow for a faster and more stable desicoin experience), pass the following argument to qmake:
+To use UPnP for port forwarding behind a NAT router (recommended, as more connections overall allow for a faster and more stable dogecoin experience), pass the following argument to qmake:
 
 ::
 
@@ -133,9 +133,9 @@ flag to qmake to control this:
 Berkely DB version warning
 ==========================
 
-A warning for people using the *static binary* version of Desicoin on a Linux/UNIX-ish system (tl;dr: **Berkely DB databases are not forward compatible**).
+A warning for people using the *static binary* version of Litecoin on a Linux/UNIX-ish system (tl;dr: **Berkely DB databases are not forward compatible**).
 
-The static binary version of Desicoin is linked against libdb4.8 (see also `this Debian issue`_).
+The static binary version of Litecoin is linked against libdb4.8 (see also `this Debian issue`_).
 
 Now the nasty thing is that databases from 5.X are not compatible with 4.X.
 
@@ -150,7 +150,7 @@ Ubuntu 11.10 warning
 ====================
 
 Ubuntu 11.10 has a package called 'qt-at-spi' installed by default.  At the time of writing, having that package
-installed causes desicoin-qt to crash intermittently.  The issue has been reported as `launchpad bug 857790`_, but
+installed causes dogecoin-qt to crash intermittently.  The issue has been reported as `launchpad bug 857790`_, but
 isn't yet fixed.
 
 Until the bug is fixed, you can remove the qt-at-spi package to work around the problem, though this will presumably

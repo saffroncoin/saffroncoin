@@ -83,8 +83,8 @@ void setupAmountWidget(QLineEdit *widget, QWidget *parent)
 
 bool parseBitcoinURI(const QUrl &uri, SendCoinsRecipient *out)
 {
-    // return if URI is not valid or is no bitcoin URI
-    if(!uri.isValid() || uri.scheme() != QString("desicoin"))
+    // return if URI is not valid or is no saffroncoin URI
+    if(!uri.isValid() || uri.scheme() != QString("saffroncoin"))
         return false;
 
     SendCoinsRecipient rv;
@@ -135,13 +135,13 @@ bool parseBitcoinURI(const QUrl &uri, SendCoinsRecipient *out)
 
 bool parseBitcoinURI(QString uri, SendCoinsRecipient *out)
 {
-    // Convert bitcoin:// to bitcoin:
+    // Convert saffroncoin:// to saffroncoin:
     //
-    //    Cannot handle this later, because bitcoin:// will cause Qt to see the part after // as host,
+    //    Cannot handle this later, because saffroncoin:// will cause Qt to see the part after // as host,
     //    which will lower-case it (and thus invalidate the address).
-    if(uri.startsWith("desicoin://"))
+    if(uri.startsWith("saffroncoin://"))
     {
-        uri.replace(0, 11, "desicoin:");
+        uri.replace(0, 10, "saffroncoin:");
     }
     QUrl uriInstance(uri);
     return parseBitcoinURI(uriInstance, out);
@@ -179,12 +179,6 @@ void copyEntryData(QAbstractItemView *view, int column, int role)
         // Copy first item (global mouse selection for e.g. X11 - NOP on Windows)
         QApplication::clipboard()->setText(selection.at(0).data(role).toString(), QClipboard::Selection);
     }
-}
-
-void setClipboard(const QString& str)
-{
-    QApplication::clipboard()->setText(str, QClipboard::Clipboard);
-    QApplication::clipboard()->setText(str, QClipboard::Selection);
 }
 
 QString getSaveFileName(QWidget *parent, const QString &caption,
@@ -301,12 +295,12 @@ bool ToolTipToRichTextFilter::eventFilter(QObject *obj, QEvent *evt)
 #ifdef WIN32
 boost::filesystem::path static StartupShortcutPath()
 {
-    return GetSpecialFolderPath(CSIDL_STARTUP) / "Desicoin.lnk";
+    return GetSpecialFolderPath(CSIDL_STARTUP) / "Saffroncoin.lnk";
 }
 
 bool GetStartOnSystemStartup()
 {
-    // check for Bitcoin.lnk
+    // check for Saffroncoin.lnk
     return boost::filesystem::exists(StartupShortcutPath());
 }
 
@@ -383,7 +377,7 @@ boost::filesystem::path static GetAutostartDir()
 
 boost::filesystem::path static GetAutostartFilePath()
 {
-    return GetAutostartDir() / "desicoin.desktop";
+    return GetAutostartDir() / "saffroncoin.desktop";
 }
 
 bool GetStartOnSystemStartup()
@@ -421,10 +415,10 @@ bool SetStartOnSystemStartup(bool fAutoStart)
         boost::filesystem::ofstream optionFile(GetAutostartFilePath(), std::ios_base::out|std::ios_base::trunc);
         if (!optionFile.good())
             return false;
-        // Write a bitcoin.desktop file to the autostart directory:
+        // Write a saffroncoin.desktop file to the autostart directory:
         optionFile << "[Desktop Entry]\n";
         optionFile << "Type=Application\n";
-        optionFile << "Name=Desicoin\n";
+        optionFile << "Name=Saffroncoin\n";
         optionFile << "Exec=" << pszExePath << " -min\n";
         optionFile << "Terminal=false\n";
         optionFile << "Hidden=false\n";
@@ -432,6 +426,7 @@ bool SetStartOnSystemStartup(bool fAutoStart)
     }
     return true;
 }
+
 
 #elif defined(Q_OS_MAC)
 // based on: https://github.com/Mozketo/LaunchAtLoginController/blob/master/LaunchAtLoginController.m
@@ -442,7 +437,7 @@ bool SetStartOnSystemStartup(bool fAutoStart)
 LSSharedFileListItemRef findStartupItemInList(LSSharedFileListRef list, CFURLRef findUrl);
 LSSharedFileListItemRef findStartupItemInList(LSSharedFileListRef list, CFURLRef findUrl)
 {
-    // loop through the list of startup items and try to find the bitcoin app
+    // loop through the list of startup items and try to find the saffroncoin app
     CFArrayRef listSnapshot = LSSharedFileListCopySnapshot(list, NULL);
     for(int i = 0; i < CFArrayGetCount(listSnapshot); i++) {
         LSSharedFileListItemRef item = (LSSharedFileListItemRef)CFArrayGetValueAtIndex(listSnapshot, i);
@@ -476,7 +471,7 @@ bool SetStartOnSystemStartup(bool fAutoStart)
     LSSharedFileListItemRef foundItem = findStartupItemInList(loginItems, bitcoinAppUrl);
 
     if(fAutoStart && !foundItem) {
-        // add bitcoin app to startup item list
+        // add saffroncoin app to startup item list
         LSSharedFileListInsertItemURL(loginItems, kLSSharedFileListItemBeforeFirst, NULL, NULL, bitcoinAppUrl, NULL, NULL);
     }
     else if(!fAutoStart && foundItem) {
@@ -495,19 +490,20 @@ bool SetStartOnSystemStartup(bool fAutoStart) { return false; }
 HelpMessageBox::HelpMessageBox(QWidget *parent) :
     QMessageBox(parent)
 {
-    header = tr("Desicoin-Qt") + " " + tr("version") + " " +
+    header = tr("Saffroncoin-Qt") + " " + tr("version") + " " +
         QString::fromStdString(FormatFullVersion()) + "\n\n" +
         tr("Usage:") + "\n" +
-        "  desicoin-qt [" + tr("command-line options") + "]                     " + "\n";
+        "  saffroncoin-qt [" + tr("command-line options") + "]                     " + "\n";
 
     coreOptions = QString::fromStdString(HelpMessage());
 
     uiOptions = tr("UI options") + ":\n" +
         "  -lang=<lang>           " + tr("Set language, for example \"de_DE\" (default: system locale)") + "\n" +
         "  -min                   " + tr("Start minimized") + "\n" +
-        "  -splash                " + tr("Show splash screen on startup (default: 1)") + "\n";
+        "  -splash                " + tr("Show splash screen on startup (default: 1)") + "\n" +
+        "  -choosedatadir         " + tr("Choose data directory on startup (default: 0)") + "\n";
 
-    setWindowTitle(tr("Desicoin-Qt"));
+    setWindowTitle(tr("Saffroncoin-Qt"));
     setTextFormat(Qt::PlainText);
     // setMinimumWidth is ignored for QMessageBox so put in non-breaking spaces to make it wider.
     setText(header + QString(QChar(0x2003)).repeated(50));
