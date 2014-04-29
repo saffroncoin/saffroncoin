@@ -146,7 +146,6 @@ OBJS= \
     obj/txdb.o \
     obj/chainparams.o \
     obj/scrypt.o \
-    obj/scrypt-sse2.o \
     obj/blake.o \
     obj/bmw.o \
     obj/groestl.o \
@@ -157,6 +156,13 @@ OBJS= \
     obj/simd.o \
     obj/cubehash.o \
     obj/shavite.o
+
+ifdef USE_SSE2
+DEFS += -DUSE_SSE2
+OBJS_SSE2= obj/scrypt-sse2.o
+OBJS += $(OBJS_SSE2)
+endif
+
 
 all: saffroncoind
 
