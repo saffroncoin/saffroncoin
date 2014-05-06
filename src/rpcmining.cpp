@@ -11,8 +11,6 @@
 using namespace json_spirit;
 using namespace std;
 
-
-
 // Key used by getwork/getblocktemplate miners.
 // Allocated in InitRPCMining, free'd in ShutdownRPCMining
 static CReserveKey* pMiningKey = NULL;
