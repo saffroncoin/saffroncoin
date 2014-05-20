@@ -1,5 +1,5 @@
-IDI_ICON1 ICON DISCARDABLE "icons/bitcoin.ico"
-IDI_ICON2 ICON DISCARDABLE "icons/bitcoin_testnet.ico"
+IDI_ICON1 ICON DISCARDABLE "icons/saffroncoin.ico"
+IDI_ICON2 ICON DISCARDABLE "icons/saffroncoin_testnet.ico"
 
 #include <windows.h>             // needed for VERSIONINFO
 #include "../../clientversion.h" // holds the needed client version information
@@ -21,7 +21,7 @@ BEGIN
         BLOCK "040904E4" // U.S. English - multilingual (hex)
         BEGIN
             VALUE "CompanyName",        "Saffroncoin"
-            VALUE "FileDescription",    "Saffroncoin-Qt (OSS GUI client for Bitcoin)"
+            VALUE "FileDescription",    "Saffroncoin-Qt (OSS GUI client for SaffronCoin)"
             VALUE "FileVersion",        VER_FILEVERSION_STR
             VALUE "InternalName",       "saffroncoin-qt"
             VALUE "LegalCopyright",     COPYRIGHT_STR
