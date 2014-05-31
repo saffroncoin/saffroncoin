@@ -10,6 +10,8 @@
 #include "script.h"
 #include "scrypt.h"
 #include "hashgroestl.h"
+#include "hashx11.h"
+#include "hashblake.h"
 
 #include <stdio.h>
 
@@ -17,6 +19,8 @@ enum {
     ALGO_SHA256D = 0, 
     ALGO_SCRYPT  = 1, 
     ALGO_GROESTL = 2,
+    ALGO_X11     = 3,
+    ALGO_BLAKE   = 4,
     NUM_ALGOS };
 
 enum
@@ -28,6 +32,8 @@ enum
     BLOCK_VERSION_ALGO           = (7 << 9),
     BLOCK_VERSION_SCRYPT         = (1 << 9),
     BLOCK_VERSION_GROESTL        = (2 << 9),
+    BLOCK_VERSION_X11            = (3 << 9),
+    BLOCK_VERSION_BLAKE          = (4 << 9),
 };
 
 inline int GetAlgo(int nVersion)
@@ -40,6 +46,10 @@ inline int GetAlgo(int nVersion)
             return ALGO_SCRYPT;
         case BLOCK_VERSION_GROESTL:
             return ALGO_GROESTL;
+        case BLOCK_VERSION_X11:
+            return ALGO_X11;
+        case BLOCK_VERSION_BLAKE:
+            return ALGO_BLAKE;
     }
     return ALGO_SHA256D;
 }
@@ -54,6 +64,10 @@ inline std::string GetAlgoName(int Algo)
             return std::string("scrypt");
         case ALGO_GROESTL:
             return std::string("groestl");
+        case ALGO_X11:
+            return std::string("x11");
+        case ALGO_BLAKE:
+            return std::string("blake");
     }
     return std::string("unknown");       
 }
@@ -652,6 +666,10 @@ public:
             }
             case ALGO_GROESTL:
                 return HashGroestl(BEGIN(nVersion), END(nNonce));
+            case ALGO_X11:
+                return HashX11(BEGIN(nVersion), END(nNonce));
+            case ALGO_BLAKE:
+                return HashBlake(BEGIN(nVersion), END(nNonce));
         }
         return GetHash();
     }

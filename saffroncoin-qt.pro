@@ -1,7 +1,7 @@
 TEMPLATE = app
 TARGET = saffroncoin-qt
 macx:TARGET = "Saffroncoin-Qt"
-VERSION = 0.8.2
+VERSION = 1.2
 INCLUDEPATH += src src/json src/qt
 QT += core gui network
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
@@ -231,6 +231,7 @@ HEADERS += src/qt/bitcoingui.h \
     src/qt/intro.h \
     src/scrypt.h \
     src/sph_blake.h \
+    src/sph_skein.h \
     src/sph_groestl.h \
     src/sph_keccak.h \
     src/sph_bmw.h \
@@ -242,6 +243,8 @@ HEADERS += src/qt/bitcoingui.h \
     src/sph_cubehash.h \
     src/sph_shavite.h \
     src/hashgroestl.h \
+    src/hashx11.h \
+    src/hashblake.h \
 
 SOURCES += src/qt/bitcoin.cpp \
     src/qt/bitcoingui.cpp \
@@ -319,6 +322,7 @@ SOURCES += src/qt/bitcoin.cpp \
     src/groestl.c \
     src/jh.c \
     src/keccak.c \
+    src/skein.c \
     src/aes_helper.c \
     src/echo.c \
     src/luffa.c \

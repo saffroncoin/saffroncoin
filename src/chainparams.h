@@ -56,6 +56,7 @@ public:
     int GetDefaultPort() const { return nDefaultPort; }
     const CBigNum& ProofOfWorkLimit(int algo) const { return bnProofOfWorkLimit[algo]; }
     int SubsidyHalvingInterval() const { return nSubsidyHalvingInterval; }
+    int SubsidyHalvingIntervalNEW() const { return nSubsidyHalvingIntervalNEW; }
     virtual const CBlock& GenesisBlock() const = 0;
     virtual bool RequireRPCPassword() const { return true; }
     const string& DataDir() const { return strDataDir; }
@@ -75,6 +76,7 @@ protected:
     int nRPCPort;
     CBigNum bnProofOfWorkLimit[NUM_ALGOS];
     int nSubsidyHalvingInterval;
+    int nSubsidyHalvingIntervalNEW;
     string strDataDir;
     vector<CDNSSeedData> vSeeds;
     int base58Prefixes[MAX_BASE58_TYPES];

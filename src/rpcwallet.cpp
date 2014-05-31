@@ -84,6 +84,8 @@ Value getinfo(const Array& params, bool fHelp)
     obj.push_back(Pair("difficulty_sha256d", (double)GetDifficulty(NULL, ALGO_SHA256D)));
     obj.push_back(Pair("difficulty_scrypt",  (double)GetDifficulty(NULL, ALGO_SCRYPT)));
     obj.push_back(Pair("difficulty_groestl", (double)GetDifficulty(NULL, ALGO_GROESTL)));
+    obj.push_back(Pair("difficulty_x11",     (double)GetDifficulty(NULL, ALGO_X11)));
+    obj.push_back(Pair("difficulty_blake",   (double)GetDifficulty(NULL, ALGO_BLAKE)));
     obj.push_back(Pair("testnet",            TestNet()));
     obj.push_back(Pair("keypoololdest",      (boost::int64_t)pwalletMain->GetOldestKeyPoolTime()));
     obj.push_back(Pair("keypoolsize",        pwalletMain->GetKeyPoolSize()));

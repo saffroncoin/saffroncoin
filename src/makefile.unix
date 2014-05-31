@@ -151,6 +151,7 @@ OBJS= \
     obj/groestl.o \
     obj/jh.o \
     obj/keccak.o \
+    obj/skein.o \
     obj/echo.o \
     obj/luffa.o \
     obj/simd.o \

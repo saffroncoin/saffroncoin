@@ -81,6 +81,8 @@ int64 nTransactionFee = 0;
 
 int miningAlgo = ALGO_SHA256D;
 
+int DiffMode = 2;
+
 
 
 //////////////////////////////////////////////////////////////////////////////
@@ -1281,19 +1283,35 @@ int static generateMTRandom(unsigned int s, int range)
 static const int64 nStartSubsidy = 72 * COIN;
 static const int64 nMinSubsidy = 0.017 * COIN;
 
+static const int64 nStartSubsidyNEW = 50 * COIN;
+static const int64 nMinSubsidyNEW = 0.1 * COIN;
+
 int64 static GetBlockValue(int nHeight, int64 nFees, uint256 prevHash)
 {
     int64 nSubsidy = nStartSubsidy;
-
+    int64 nSubsidyNEW = nStartSubsidyNEW;
+    
     std::string cseed_str = prevHash.ToString().substr(5,7);
     const char* cseed = cseed_str.c_str();
     long seed = hex2long(cseed);
     int rand = generateMTRandom(seed, 6000);
 
-    //Random Superblock
-    if(rand > 2075 && rand < 2099)  
+    if(nHeight < DIFF_SWITCH_BLOCK)
     {
-        nSubsidy *= 5;
+        //Random Superblock
+        if(rand > 2075 && rand < 2099)  
+        {
+            nSubsidy *= 5;
+        }
+    }
+    else
+    {
+        //Random Superblock
+        if(rand > 2099 && rand < 2199)  
+        {
+            nSubsidyNEW *= 5;
+        }
+
     }
 
     // 1st 2 days bonus
@@ -1302,32 +1320,64 @@ int64 static GetBlockValue(int nHeight, int64 nFees, uint256 prevHash)
         nSubsidy *= 3;
     }
 
-
-    // Mining phase: Subsidy is cut in half every SubsidyHalvingInterval
-    nSubsidy >>= (nHeight / Params().SubsidyHalvingInterval());
+    if(nHeight < DIFF_SWITCH_BLOCK)
+    {
+        // Mining phase: Subsidy is cut in half every SubsidyHalvingInterval
+        nSubsidy >>= (nHeight / Params().SubsidyHalvingInterval());
+    }
+    else
+    {
+        // Mining phase: Subsidy is cut in half every SubsidyHalvingInterval
+        nSubsidyNEW >>= (nHeight / Params().SubsidyHalvingIntervalNEW());
+    }
     
     // Inflation phase: Subsidy reaches minimum subsidy
     // Network is rewarded for transaction processing with transaction fees and 
     // the inflationary subsidy
-    if (nSubsidy < nMinSubsidy)
+    if(nHeight < DIFF_SWITCH_BLOCK)
     {
-        nSubsidy = nMinSubsidy;
+        if (nSubsidy < nMinSubsidy)
+        {
+            nSubsidy = nMinSubsidy;
+        }
     }
-
-    return nSubsidy + nFees;
+    else
+    {
+        if (nSubsidyNEW < nMinSubsidyNEW)
+        {
+            nSubsidyNEW = nMinSubsidyNEW;
+        }
+    }
+    if(nHeight < DIFF_SWITCH_BLOCK)
+    {
+        return nSubsidy + nFees;
+    }
+    else
+    {
+        return nSubsidyNEW + nFees;
+    }
 }
 
 static const int64 nTargetTimespan = 90; // 1.5 minutes (NUM_ALGOS * 30 seconds) readjusts difficulty
 static const int64 nTargetSpacing = 90; // 1.5 minutes (NUM_ALGOS * 30 seconds) between blocks
+
+static const int64 nTargetTimespanNEW = 150; // 2.5 minutes (NUM_ALGOS * 30 seconds) readjusts difficulty
+static const int64 nTargetSpacingNEW = 150; // 2.5 minutes (NUM_ALGOS * 30 seconds) between blocks
+
 static const int64 nInterval = 1; // retargets every blocks
 
 static const int64 nAveragingInterval = 10; // 10 blocks
+
 static const int64 nAveragingTargetTimespan = nAveragingInterval * nTargetSpacing; // 15 minutes
+
+static const int64 nAveragingTargetTimespanNEW = nAveragingInterval * nTargetSpacingNEW; // 25 minutes
 
 static const int64 nMaxAdjustDown = 4; // 4% adjustment down
 static const int64 nMaxAdjustUp = 2; // 2% adjustment up
 
 static const int64 nTargetTimespanAdjDown = nTargetTimespan * (100 + nMaxAdjustDown) / 100;
+
+static const int64 nTargetTimespanAdjDownNEW = nTargetTimespanNEW * (100 + nMaxAdjustDown) / 100;
 
 //
 // minimum amount of work that could possibly be required nTime after
@@ -1361,8 +1411,11 @@ unsigned int ComputeMinWork(unsigned int nBase, int64 nTime)
 
 static const int64 nMinActualTimespan = nAveragingTargetTimespan * (100 - nMaxAdjustUp) / 100;
 static const int64 nMaxActualTimespan = nAveragingTargetTimespan * (100 + nMaxAdjustDown) / 100;
+
+static const int64 nMinActualTimespanNEW = nAveragingTargetTimespanNEW * (100 - nMaxAdjustUp) / 100;
+static const int64 nMaxActualTimespanNEW = nAveragingTargetTimespanNEW * (100 + nMaxAdjustDown) / 100;
     
-unsigned int static GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHeader *pblock, int algo)
+unsigned int static GetNextWorkRequired_V1(const CBlockIndex* pindexLast, const CBlockHeader *pblock, int algo)
 {
     unsigned int nProofOfWorkLimit = Params().ProofOfWorkLimit(algo).GetCompact();
     
@@ -1427,6 +1480,99 @@ unsigned int static GetNextWorkRequired(const CBlockIndex* pindexLast, const CBl
 
     return bnNew.GetCompact();
 }
+
+//DIGISHIELD
+unsigned int DigiShield(const CBlockIndex* pindexLast, const CBlockHeader *pblock, int algo)
+{
+    unsigned int nProofOfWorkLimit = Params().ProofOfWorkLimit(algo).GetCompact();
+
+    int blockstogoback = 0;
+
+    int64_t retargetTimespan = nAveragingTargetTimespanNEW;
+    int64_t retargetInterval = nInterval;
+
+    // Genesis block
+    if (pindexLast == NULL) return nProofOfWorkLimit;
+
+    // Only change once per interval
+    if ((pindexLast->nHeight+1) % retargetInterval != 0)
+    {
+        if (TestNet())
+        {
+            // Special difficulty rule for testnet:
+            // If the new block's timestamp is more than 2* 10 minutes
+            // then allow mining of a min-difficulty block.
+            if (pblock->nTime > pindexLast->nTime + nTargetSpacingNEW*2)
+                return nProofOfWorkLimit;
+            else
+            {
+                // Return the last non-special-min-difficulty-rules-block
+                const CBlockIndex* pindex = pindexLast;
+                while (pindex->pprev && pindex->nHeight % retargetInterval != 0 && pindex->nBits == nProofOfWorkLimit)
+                    pindex = pindex->pprev;
+                return pindex->nBits;
+            }
+        }
+        return pindexLast->nBits;
+    }
+
+    // This fixes an issue where a 51% attack can change difficulty at will.
+    // Go back the full period unless it's the first retarget after genesis. Code courtesy of Art Forz
+    blockstogoback = retargetInterval-1;
+    if ((pindexLast->nHeight+1) != retargetInterval) blockstogoback = retargetInterval;
+
+    // Go back by what we want to be 14 days worth of blocks
+    const CBlockIndex* pindexFirst = pindexLast;
+    for (int i = 0; pindexFirst && i < blockstogoback; i++)
+        pindexFirst = pindexFirst->pprev;
+    assert(pindexFirst);
+
+    // Limit adjustment step
+    int64_t nActualTimespan = pindexLast->GetBlockTime() - pindexFirst->GetBlockTime();
+    printf("nActualTimespan = %d before bounds\n", nActualTimespan);
+
+    // thanks to RealSolid & WDC for this code
+    printf("GetNextWorkRequired nActualTimespan Limiting\n");
+    if (nActualTimespan < (nMinActualTimespanNEW - (nMinActualTimespanNEW/4)) ) nActualTimespan = (nMinActualTimespanNEW - (nMinActualTimespanNEW/4));
+    if (nActualTimespan > (nMaxActualTimespanNEW + (nMaxActualTimespanNEW/2)) ) nActualTimespan = (nMaxActualTimespanNEW + (nMaxActualTimespanNEW/2));
+
+    CBigNum bnNew;
+    bnNew.SetCompact(pindexLast->nBits);
+    bnNew *= nActualTimespan;
+    bnNew /= retargetTimespan;
+
+    if (bnNew > Params().ProofOfWorkLimit(algo))
+        bnNew = Params().ProofOfWorkLimit(algo);
+
+    /// debug print
+    printf("DigiShield RETARGET\n");
+    printf("nTargetTimespan = %ld nActualTimespan = %d\n", retargetTimespan, nActualTimespan);
+    printf("Before: %08x  %s\n", pindexLast->nBits, CBigNum().SetCompact(pindexLast->nBits).getuint256().ToString().c_str());
+    printf("After:  %08x  %s\n", bnNew.GetCompact(), bnNew.getuint256().ToString().c_str());
+
+    return bnNew.GetCompact();
+}
+
+unsigned int static GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHeader *pblock, int algo)
+{
+        if (TestNet()) {
+                DiffMode = 2;
+        } else {
+            if (pindexLast->nHeight + 1 >= 1) {
+                if(pindexLast->nHeight + 1 < DIFF_SWITCH_BLOCK) {
+                    DiffMode = 1; //Traditional
+                } else {
+                    DiffMode = 2; //DigiShield
+                }
+            }
+        }
+        
+        if (DiffMode == 1) { 
+            return GetNextWorkRequired_V1(pindexLast, pblock, algo); 
+        } 
+        return DigiShield(pindexLast, pblock, algo);
+}
+
 
 bool CheckProofOfWork(uint256 hash, unsigned int nBits, int algo)
 {
@@ -4365,20 +4511,51 @@ CBlockTemplate* CreateNewBlock(CReserveKey& reservekey, int algo)
 
     // Set block version
     pblock->nVersion = BLOCK_VERSION_DEFAULT;
-    switch (algo)
-    {
-        case ALGO_SHA256D:
-            break;
-        case ALGO_SCRYPT:
-            pblock->nVersion |= BLOCK_VERSION_SCRYPT;
-            break;
-        case ALGO_GROESTL:
-            pblock->nVersion |= BLOCK_VERSION_GROESTL;
-            break;
-        default:
-            error("CreateNewBlock: bad algo");
-            return NULL;
-    }
+    if (pindexBest->nHeight < DIFF_SWITCH_BLOCK)
+        {
+             switch (algo)
+            {
+                case ALGO_SHA256D:
+                    break;
+                case ALGO_SCRYPT:
+                    pblock->nVersion |= BLOCK_VERSION_SCRYPT;
+                    break;
+                case ALGO_GROESTL:
+                    pblock->nVersion |= BLOCK_VERSION_GROESTL;
+                    break;
+                default:
+                    error("CreateNewBlock: bad algo");
+                    return NULL;
+            }
+            printf("DIFFMODE = 1 self\n");
+        }
+        else
+        {
+            switch (algo)
+            {
+                case ALGO_SHA256D:
+                    break;
+                case ALGO_SCRYPT:
+                    pblock->nVersion |= BLOCK_VERSION_SCRYPT;
+                    break;
+                case ALGO_GROESTL:
+                    pblock->nVersion |= BLOCK_VERSION_GROESTL;
+                    break;
+                case ALGO_X11:
+                    pblock->nVersion |= BLOCK_VERSION_X11;
+                    break;
+                case ALGO_BLAKE:
+                    pblock->nVersion |= BLOCK_VERSION_BLAKE;
+                    break;
+                default:
+                    error("CreateNewBlock: bad algo");
+                    return NULL;
+            }
+            printf("DIFFMODE = 2 self\n");
+        }
+            
+        
+    
     
     // Create coinbase tx
     CTransaction txNew;
@@ -5114,26 +5291,60 @@ void static ThreadBitcoinMiner(CWallet *pwallet)
     SetThreadPriority(THREAD_PRIORITY_LOWEST);
     RenameThread("bitcoin-miner");
     
-    try 
-    {
-        switch (miningAlgo)
+    if (pindexBest->nHeight < DIFF_SWITCH_BLOCK) 
         {
-            case ALGO_SHA256D:
-                BitcoinMiner(pwallet);
-                break;
-            case ALGO_SCRYPT:
-                ScryptMiner(pwallet);
-                break;
-            case ALGO_GROESTL:
-                GenericMiner(pwallet, ALGO_GROESTL);
-                break;
+            try 
+            {
+                switch (miningAlgo)
+                {
+                    case ALGO_SHA256D:
+                        BitcoinMiner(pwallet);
+                        break;
+                    case ALGO_SCRYPT:
+                        ScryptMiner(pwallet);
+                        break;
+                    case ALGO_GROESTL:
+                        GenericMiner(pwallet, ALGO_GROESTL);
+                        break;
+                }
+            }
+            catch (boost::thread_interrupted)
+            {
+                printf("Saffroncoin miner terminated\n");
+                throw;
+            }
+            printf("DIFFMODEthread1\n");
         }
-    }
-    catch (boost::thread_interrupted)
-    {
-        printf("Saffroncoin miner terminated\n");
-        throw;
-    }
+        else
+        {
+            try 
+            {
+                switch (miningAlgo)
+                {
+                    case ALGO_SHA256D:
+                        BitcoinMiner(pwallet);
+                        break;
+                    case ALGO_SCRYPT:
+                        ScryptMiner(pwallet);
+                        break;
+                    case ALGO_GROESTL:
+                        GenericMiner(pwallet, ALGO_GROESTL);
+                        break;
+                    case ALGO_X11:
+                        GenericMiner(pwallet, ALGO_X11);
+                        break;
+                    case ALGO_BLAKE:
+                        GenericMiner(pwallet, ALGO_BLAKE);
+                        break;
+                }
+            }
+            catch (boost::thread_interrupted)
+            {
+                printf("Saffroncoin miner terminated\n");
+                throw;
+            }
+            printf("DIFFMODEthread2 height=%d\n",pindexBest->nHeight);
+        }
 }
 
 void GenerateBitcoins(bool fGenerate, CWallet* pwallet)

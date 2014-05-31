@@ -54,6 +54,8 @@ static const unsigned int LOCKTIME_THRESHOLD = 500000000; // Tue Nov  5 00:53:20
 static const int MAX_SCRIPTCHECK_THREADS = 16;
 /** Default amount of block size reserved for high-priority transactions (in bytes) */
 static const int DEFAULT_BLOCK_PRIORITY_SIZE = 27000;
+/** Block to acivate Hardfork v1.2 */
+static const int DIFF_SWITCH_BLOCK = 112999;
 #ifdef USE_UPNP
 static const int fHaveUPnP = true;
 #else
@@ -304,7 +306,7 @@ inline bool AllowFree(double dPriority)
 {
     // Large (in bytes) low-priority (new, small-coin) transactions
     // need a fee.
-    return dPriority > COIN * 480 / 250;
+    return dPriority > COIN * 240 / 250;
 }
 
 // Check whether all inputs of this transaction are valid (no double spends, scripts & sigs, amounts)
@@ -847,6 +849,10 @@ public:
                 return 1024 * 4;
             case ALGO_GROESTL:
                 return 64 * 8;
+            case ALGO_X11:
+                return 32 * 8;
+            case ALGO_BLAKE:
+                return 4 * 8;
             default:
                 return 1;
         }

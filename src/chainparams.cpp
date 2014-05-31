@@ -32,8 +32,11 @@ public:
         nRPCPort = 19710;
         bnProofOfWorkLimit[ALGO_SHA256D] = CBigNum(~uint256(0) >> 20);
         bnProofOfWorkLimit[ALGO_SCRYPT]  = CBigNum(~uint256(0) >> 20);
-        bnProofOfWorkLimit[ALGO_GROESTL]   = CBigNum(~uint256(0) >> 20);
+        bnProofOfWorkLimit[ALGO_GROESTL] = CBigNum(~uint256(0) >> 20);
+        bnProofOfWorkLimit[ALGO_X11]     = CBigNum(~uint256(0) >> 20);
+        bnProofOfWorkLimit[ALGO_BLAKE]   = CBigNum(~uint256(0) >> 20);
         nSubsidyHalvingInterval = 524160; // ~ every 6 months (2880 blocks per day including all algorithms)
+        nSubsidyHalvingIntervalNEW = 1036800; // ~ every 12 months (2880 blocks per day including all algorithms)
 
         // Build the genesis block. Note that the output of the genesis coinbase cannot
         // be spent as it did not originally exist in the database.
@@ -165,6 +168,8 @@ public:
         bnProofOfWorkLimit[ALGO_SHA256D] = CBigNum(~uint256(0) >> 1);
         bnProofOfWorkLimit[ALGO_SCRYPT]  = CBigNum(~uint256(0) >> 1);
         bnProofOfWorkLimit[ALGO_GROESTL] = CBigNum(~uint256(0) >> 1);
+        bnProofOfWorkLimit[ALGO_X11]     = CBigNum(~uint256(0) >> 1);
+        bnProofOfWorkLimit[ALGO_BLAKE]   = CBigNum(~uint256(0) >> 1);
         genesis.nTime = 1296688602;
         genesis.nBits = 0x207fffff;
         genesis.nNonce = 4;
