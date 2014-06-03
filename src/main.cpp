@@ -1283,7 +1283,7 @@ int static generateMTRandom(unsigned int s, int range)
 static const int64 nStartSubsidy = 72 * COIN;
 static const int64 nMinSubsidy = 0.017 * COIN;
 
-static const int64 nStartSubsidyNEW = 50 * COIN;
+static const int64 nStartSubsidyNEW = 72 * COIN;
 static const int64 nMinSubsidyNEW = 0.1 * COIN;
 
 int64 static GetBlockValue(int nHeight, int64 nFees, uint256 prevHash)
@@ -1318,6 +1318,32 @@ int64 static GetBlockValue(int nHeight, int64 nFees, uint256 prevHash)
     if(nHeight < 5761)     
     {
         nSubsidy *= 3;
+    }
+
+    //Super block weeks after every year for the 1st 5 years
+    if(nHeight > 345599 && nHeight < 352321)     
+    {
+        nSubsidy *= 5;
+    }
+
+    else if(nHeight > 691197 && nHeight < 697919)     
+    {
+        nSubsidy *= 5;
+    }
+
+    else if(nHeight > 1036797 && nHeight < 1043519)     
+    {
+        nSubsidy *= 5;
+    }
+
+    else if(nHeight > 1382397 && nHeight < 1389119)     
+    {
+        nSubsidy *= 5;
+    }
+
+    else if(nHeight > 1727997 && nHeight < 1734719)     
+    {
+        nSubsidy *= 7;
     }
 
     if(nHeight < DIFF_SWITCH_BLOCK)
@@ -1361,8 +1387,8 @@ int64 static GetBlockValue(int nHeight, int64 nFees, uint256 prevHash)
 static const int64 nTargetTimespan = 90; // 1.5 minutes (NUM_ALGOS * 30 seconds) readjusts difficulty
 static const int64 nTargetSpacing = 90; // 1.5 minutes (NUM_ALGOS * 30 seconds) between blocks
 
-static const int64 nTargetTimespanNEW = 150; // 2.5 minutes (NUM_ALGOS * 30 seconds) readjusts difficulty
-static const int64 nTargetSpacingNEW = 150; // 2.5 minutes (NUM_ALGOS * 30 seconds) between blocks
+static const int64 nTargetTimespanNEW = 450; // 5.5 minutes (NUM_ALGOS * 90 seconds) readjusts difficulty
+static const int64 nTargetSpacingNEW = 450; // 5.5 minutes (NUM_ALGOS * 90 seconds) between blocks
 
 static const int64 nInterval = 1; // retargets every blocks
 
@@ -1370,7 +1396,7 @@ static const int64 nAveragingInterval = 10; // 10 blocks
 
 static const int64 nAveragingTargetTimespan = nAveragingInterval * nTargetSpacing; // 15 minutes
 
-static const int64 nAveragingTargetTimespanNEW = nAveragingInterval * nTargetSpacingNEW; // 25 minutes
+static const int64 nAveragingTargetTimespanNEW = nAveragingInterval * nTargetSpacingNEW; // 75 minutes
 
 static const int64 nMaxAdjustDown = 4; // 4% adjustment down
 static const int64 nMaxAdjustUp = 2; // 2% adjustment up

@@ -36,7 +36,7 @@ public:
         bnProofOfWorkLimit[ALGO_X11]     = CBigNum(~uint256(0) >> 20);
         bnProofOfWorkLimit[ALGO_BLAKE]   = CBigNum(~uint256(0) >> 20);
         nSubsidyHalvingInterval = 524160; // ~ every 6 months (2880 blocks per day including all algorithms)
-        nSubsidyHalvingIntervalNEW = 1036800; // ~ every 12 months (2880 blocks per day including all algorithms)
+        nSubsidyHalvingIntervalNEW = 518400; // ~ every 18 months (960 blocks per day including all algorithms)
 
         // Build the genesis block. Note that the output of the genesis coinbase cannot
         // be spent as it did not originally exist in the database.
