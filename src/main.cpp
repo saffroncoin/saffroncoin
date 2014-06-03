@@ -1387,8 +1387,8 @@ int64 static GetBlockValue(int nHeight, int64 nFees, uint256 prevHash)
 static const int64 nTargetTimespan = 90; // 1.5 minutes (NUM_ALGOS * 30 seconds) readjusts difficulty
 static const int64 nTargetSpacing = 90; // 1.5 minutes (NUM_ALGOS * 30 seconds) between blocks
 
-static const int64 nTargetTimespanNEW = 450; // 5.5 minutes (NUM_ALGOS * 90 seconds) readjusts difficulty
-static const int64 nTargetSpacingNEW = 450; // 5.5 minutes (NUM_ALGOS * 90 seconds) between blocks
+static const int64 nTargetTimespanNEW = 450; // 7.5 minutes (NUM_ALGOS * 90 seconds) readjusts difficulty
+static const int64 nTargetSpacingNEW = 450; // 7.5 minutes (NUM_ALGOS * 90 seconds) between blocks
 
 static const int64 nInterval = 1; // retargets every blocks
 
