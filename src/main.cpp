@@ -81,7 +81,6 @@ int64 nTransactionFee = 0;
 
 int miningAlgo = ALGO_SHA256D;
 
-int DiffMode = 2;
 
 
 
@@ -1441,7 +1440,8 @@ static const int64 nMaxActualTimespan = nAveragingTargetTimespan * (100 + nMaxAd
 static const int64 nMinActualTimespanNEW = nAveragingTargetTimespanNEW * (100 - nMaxAdjustUp) / 100;
 static const int64 nMaxActualTimespanNEW = nAveragingTargetTimespanNEW * (100 + nMaxAdjustDown) / 100;
     
-unsigned int static GetNextWorkRequired_V1(const CBlockIndex* pindexLast, const CBlockHeader *pblock, int algo)
+
+unsigned int static GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHeader *pblock, int algo)
 {
     unsigned int nProofOfWorkLimit = Params().ProofOfWorkLimit(algo).GetCompact();
     
@@ -1507,97 +1507,6 @@ unsigned int static GetNextWorkRequired_V1(const CBlockIndex* pindexLast, const 
     return bnNew.GetCompact();
 }
 
-//DIGISHIELD
-unsigned int DigiShield(const CBlockIndex* pindexLast, const CBlockHeader *pblock, int algo)
-{
-    unsigned int nProofOfWorkLimit = Params().ProofOfWorkLimit(algo).GetCompact();
-
-    int blockstogoback = 0;
-
-    int64_t retargetTimespan = nAveragingTargetTimespanNEW;
-    int64_t retargetInterval = nInterval;
-
-    // Genesis block
-    if (pindexLast == NULL) return nProofOfWorkLimit;
-
-    // Only change once per interval
-    if ((pindexLast->nHeight+1) % retargetInterval != 0)
-    {
-        if (TestNet())
-        {
-            // Special difficulty rule for testnet:
-            // If the new block's timestamp is more than 2* 10 minutes
-            // then allow mining of a min-difficulty block.
-            if (pblock->nTime > pindexLast->nTime + nTargetSpacingNEW*2)
-                return nProofOfWorkLimit;
-            else
-            {
-                // Return the last non-special-min-difficulty-rules-block
-                const CBlockIndex* pindex = pindexLast;
-                while (pindex->pprev && pindex->nHeight % retargetInterval != 0 && pindex->nBits == nProofOfWorkLimit)
-                    pindex = pindex->pprev;
-                return pindex->nBits;
-            }
-        }
-        return pindexLast->nBits;
-    }
-
-    // This fixes an issue where a 51% attack can change difficulty at will.
-    // Go back the full period unless it's the first retarget after genesis. Code courtesy of Art Forz
-    blockstogoback = retargetInterval-1;
-    if ((pindexLast->nHeight+1) != retargetInterval) blockstogoback = retargetInterval;
-
-    // Go back by what we want to be 14 days worth of blocks
-    const CBlockIndex* pindexFirst = pindexLast;
-    for (int i = 0; pindexFirst && i < blockstogoback; i++)
-        pindexFirst = pindexFirst->pprev;
-    assert(pindexFirst);
-
-    // Limit adjustment step
-    int64_t nActualTimespan = pindexLast->GetBlockTime() - pindexFirst->GetBlockTime();
-    printf("nActualTimespan = %d before bounds\n", nActualTimespan);
-
-    // thanks to RealSolid & WDC for this code
-    printf("GetNextWorkRequired nActualTimespan Limiting\n");
-    if (nActualTimespan < (nMinActualTimespanNEW - (nMinActualTimespanNEW/4)) ) nActualTimespan = (nMinActualTimespanNEW - (nMinActualTimespanNEW/4));
-    if (nActualTimespan > (nMaxActualTimespanNEW + (nMaxActualTimespanNEW/2)) ) nActualTimespan = (nMaxActualTimespanNEW + (nMaxActualTimespanNEW/2));
-
-    CBigNum bnNew;
-    bnNew.SetCompact(pindexLast->nBits);
-    bnNew *= nActualTimespan;
-    bnNew /= retargetTimespan;
-
-    if (bnNew > Params().ProofOfWorkLimit(algo))
-        bnNew = Params().ProofOfWorkLimit(algo);
-
-    /// debug print
-    printf("DigiShield RETARGET\n");
-    printf("nTargetTimespan = %ld nActualTimespan = %d\n", retargetTimespan, nActualTimespan);
-    printf("Before: %08x  %s\n", pindexLast->nBits, CBigNum().SetCompact(pindexLast->nBits).getuint256().ToString().c_str());
-    printf("After:  %08x  %s\n", bnNew.GetCompact(), bnNew.getuint256().ToString().c_str());
-
-    return bnNew.GetCompact();
-}
-
-unsigned int static GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHeader *pblock, int algo)
-{
-        if (TestNet()) {
-                DiffMode = 2;
-        } else {
-            if (pindexLast->nHeight + 1 >= 1) {
-                if(pindexLast->nHeight + 1 < DIFF_SWITCH_BLOCK) {
-                    DiffMode = 1; //Traditional
-                } else {
-                    DiffMode = 2; //DigiShield
-                }
-            }
-        }
-        
-        if (DiffMode == 1) { 
-            return GetNextWorkRequired_V1(pindexLast, pblock, algo); 
-        } 
-        return DigiShield(pindexLast, pblock, algo);
-}
 
 
 bool CheckProofOfWork(uint256 hash, unsigned int nBits, int algo)
@@ -4553,7 +4462,7 @@ CBlockTemplate* CreateNewBlock(CReserveKey& reservekey, int algo)
                     error("CreateNewBlock: bad algo");
                     return NULL;
             }
-            printf("DIFFMODE = 1 self\n");
+            
         }
         else
         {
@@ -4577,7 +4486,7 @@ CBlockTemplate* CreateNewBlock(CReserveKey& reservekey, int algo)
                     error("CreateNewBlock: bad algo");
                     return NULL;
             }
-            printf("DIFFMODE = 2 self\n");
+            
         }
             
         
@@ -5339,7 +5248,7 @@ void static ThreadBitcoinMiner(CWallet *pwallet)
                 printf("Saffroncoin miner terminated\n");
                 throw;
             }
-            printf("DIFFMODEthread1\n");
+            
         }
         else
         {
@@ -5369,7 +5278,7 @@ void static ThreadBitcoinMiner(CWallet *pwallet)
                 printf("Saffroncoin miner terminated\n");
                 throw;
             }
-            printf("DIFFMODEthread2 height=%d\n",pindexBest->nHeight);
+           
         }
 }
 
