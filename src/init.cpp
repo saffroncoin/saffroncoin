@@ -420,7 +420,7 @@ bool AppInit2(boost::thread_group& threadGroup)
         miningAlgo = ALGO_GROESTL;
     else if (strAlgo == "x11")
         miningAlgo = ALGO_X11;
-    else if (strAlgo == "blake")
+    else if (strAlgo == "blake" || strAlgo == "blake256")
         miningAlgo = ALGO_BLAKE;
     else
         miningAlgo = ALGO_SHA256D;

@@ -54,8 +54,8 @@ static const unsigned int LOCKTIME_THRESHOLD = 500000000; // Tue Nov  5 00:53:20
 static const int MAX_SCRIPTCHECK_THREADS = 16;
 /** Default amount of block size reserved for high-priority transactions (in bytes) */
 static const int DEFAULT_BLOCK_PRIORITY_SIZE = 27000;
-/** Block to acivate Hardfork v1.2 */
-static const int DIFF_SWITCH_BLOCK = 112999;
+/** Block to acivate Hardfork v1.3 */
+static const int DIFF_SWITCH_BLOCK = 114500;
 #ifdef USE_UPNP
 static const int fHaveUPnP = true;
 #else
