@@ -850,7 +850,7 @@ public:
             case ALGO_GROESTL:
                 return 64 * 8;
             case ALGO_X11:
-                return 32 * 8;
+                return 128 * 8;
             case ALGO_BLAKE:
                 return 4 * 8;
             default:
@@ -862,6 +862,17 @@ public:
     {
         CBigNum bnRes;
         bnRes = GetBlockWork() * GetAlgoWorkFactor();
+       
+       
+        while (bnRes < 100000)
+        {
+            bnRes = bnRes * 2;
+        }
+        while (bnRes > 100000)
+        {
+            bnRes = bnRes / 2;
+        }
+       
         return bnRes;
     }
     
