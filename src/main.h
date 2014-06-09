@@ -56,6 +56,8 @@ static const int MAX_SCRIPTCHECK_THREADS = 16;
 static const int DEFAULT_BLOCK_PRIORITY_SIZE = 27000;
 /** Block to acivate Hardfork v1.3 */
 static const int DIFF_SWITCH_BLOCK = 114500;
+/** Block to acivate Hardfork v1.3.2 */
+static const int DIFF_SWITCH_BLOCK_2 = 120290;
 #ifdef USE_UPNP
 static const int fHaveUPnP = true;
 #else
@@ -862,8 +864,8 @@ public:
     {
         CBigNum bnRes;
         bnRes = GetBlockWork() * GetAlgoWorkFactor();
-       
-       
+        
+
         while (bnRes < 100000)
         {
             bnRes = bnRes * 2;

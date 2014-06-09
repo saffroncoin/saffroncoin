@@ -81,8 +81,7 @@ int64 nTransactionFee = 0;
 
 int miningAlgo = ALGO_SHA256D;
 
-
-
+int nTargetSpacingSwitch = 450;
 
 //////////////////////////////////////////////////////////////////////////////
 //
@@ -1449,18 +1448,29 @@ unsigned int static GetNextWorkRequired(const CBlockIndex* pindexLast, const CBl
     if (pindexLast == NULL)
         return nProofOfWorkLimit;
     
+    const CBlockIndex* pindex = pindexLast;
+    
     // Testnet
     if (TestNet())
     {
+
         // Special difficulty rule for testnet:
         // If the new block's timestamp is more than 2* 10 minutes
         // then allow mining of a min-difficulty block.
-        if (pblock->nTime > pindexLast->nTime + nTargetSpacing*2)
+        if(pindex->nHeight < DIFF_SWITCH_BLOCK_2)
+        {
+            nTargetSpacingSwitch = nTargetSpacing;
+        }
+        else
+        {
+            nTargetSpacingSwitch = nTargetSpacingNEW;
+        }
+        if (pblock->nTime > pindexLast->nTime + nTargetSpacingSwitch*2)
             return nProofOfWorkLimit;
         else
         {
             // Return the last non-special-min-difficulty-rules-block
-            const CBlockIndex* pindex = pindexLast;
+            
             while (pindex->pprev && pindex->nHeight % nInterval != 0 && pindex->nBits == nProofOfWorkLimit)
                 pindex = pindex->pprev;
             return pindex->nBits;
@@ -1484,23 +1494,42 @@ unsigned int static GetNextWorkRequired(const CBlockIndex* pindexLast, const CBl
     // Limit adjustment step
     int64 nActualTimespan = pindexPrev->GetBlockTime() - pindexFirst->GetBlockTime();
     printf("  nActualTimespan = %"PRI64d"  before bounds\n", nActualTimespan);
-    if (nActualTimespan < nMinActualTimespan)
-        nActualTimespan = nMinActualTimespan;
-    if (nActualTimespan > nMaxActualTimespan)
-        nActualTimespan = nMaxActualTimespan;
+    if(pindex->nHeight < DIFF_SWITCH_BLOCK_2)
+        {
+            if (nActualTimespan < nMinActualTimespan)
+            nActualTimespan = nMinActualTimespan;
+            if (nActualTimespan > nMaxActualTimespan)
+            nActualTimespan = nMaxActualTimespan;
+        }
+        else
+        {
+            if (nActualTimespan < nMinActualTimespanNEW)
+            nActualTimespan = nMinActualTimespanNEW;
+            if (nActualTimespan > nMaxActualTimespanNEW)
+            nActualTimespan = nMaxActualTimespanNEW;
+        }
+    
 
     // Retarget
     CBigNum bnNew;
     bnNew.SetCompact(pindexPrev->nBits);
     bnNew *= nActualTimespan;
+    if(pindex->nHeight < DIFF_SWITCH_BLOCK_2)
     bnNew /= nAveragingTargetTimespan;
+    else
+    bnNew /= nAveragingTargetTimespanNEW;
 
     if (bnNew > Params().ProofOfWorkLimit(algo))
         bnNew = Params().ProofOfWorkLimit(algo);
 
     /// debug print
     printf("GetNextWorkRequired RETARGET\n");
+
+    if(pindex->nHeight < DIFF_SWITCH_BLOCK_2)
     printf("nTargetTimespan = %"PRI64d"    nActualTimespan = %"PRI64d"\n", nAveragingTargetTimespan, nActualTimespan);
+    else
+    printf("nTargetTimespan = %"PRI64d"    nActualTimespan = %"PRI64d"\n", nAveragingTargetTimespanNEW, nActualTimespan);
+
     printf("Before: %08x  %s\n", pindexPrev->nBits, CBigNum().SetCompact(pindexPrev->nBits).getuint256().ToString().c_str());
     printf("After:  %08x  %s\n", bnNew.GetCompact(), bnNew.getuint256().ToString().c_str());
 
