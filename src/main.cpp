@@ -1284,10 +1284,13 @@ static const int64 nMinSubsidy = 0.017 * COIN;
 static const int64 nStartSubsidyNEW = 72 * COIN;
 static const int64 nMinSubsidyNEW = 0.1 * COIN;
 
+static const int64 nStartSubsidyNEW2 = 32 * COIN;
+
 int64 static GetBlockValue(int nHeight, int64 nFees, uint256 prevHash)
 {
     int64 nSubsidy = nStartSubsidy;
     int64 nSubsidyNEW = nStartSubsidyNEW;
+    int64 nSubsidyNEW2 = nStartSubsidyNEW2;
     
     std::string cseed_str = prevHash.ToString().substr(5,7);
     const char* cseed = cseed_str.c_str();
@@ -1302,14 +1305,14 @@ int64 static GetBlockValue(int nHeight, int64 nFees, uint256 prevHash)
             nSubsidy *= 5;
         }
     }
-    else
+
+    else if(nHeight > DIFF_SWITCH_BLOCK_2 && nHeight < DIFF_SWITCH_BLOCK_3)
     {
         //Random Superblock
-        if(rand > 2099 && rand < 2199)  
+        if(rand > 2190 && rand < 2199)  
         {
-            nSubsidyNEW *= 5;
+            nSubsidyNEW2 *= 5;
         }
-
     }
 
     // 1st 2 days bonus
@@ -1318,47 +1321,104 @@ int64 static GetBlockValue(int nHeight, int64 nFees, uint256 prevHash)
         nSubsidy *= 3;
     }
 
-    //Super block weeks after every year for the 1st 5 years
-    if(nHeight > 345599 && nHeight < 352321)     
-    {
-        nSubsidy *= 5;
-    }
-
-    else if(nHeight > 691197 && nHeight < 697919)     
-    {
-        nSubsidy *= 5;
-    }
-
-    else if(nHeight > 1036797 && nHeight < 1043519)     
-    {
-        nSubsidy *= 5;
-    }
-
-    else if(nHeight > 1382397 && nHeight < 1389119)     
-    {
-        nSubsidy *= 5;
-    }
-
-    else if(nHeight > 1727997 && nHeight < 1734719)     
-    {
-        nSubsidy *= 7;
-    }
 
     if(nHeight < DIFF_SWITCH_BLOCK)
     {
         // Mining phase: Subsidy is cut in half every SubsidyHalvingInterval
         nSubsidy >>= (nHeight / Params().SubsidyHalvingInterval());
     }
+    else if(nHeight > DIFF_SWITCH_BLOCK_3)
+    {
+       if(nHeight > 171780 && nHeight < 344582)
+       {
+            nSubsidyNEW2 = nStartSubsidyNEW2;
+       }
+       else if(nHeight > 344581 && nHeight < 430983)
+       {
+            nSubsidyNEW2 = 27 * COIN;
+       }
+       else if(nHeight > 430982 && nHeight < 603784)
+       {
+            nSubsidyNEW2 = 21 * COIN;
+       }
+       else if(nHeight > 603783 && nHeight < 690185)
+       {
+            nSubsidyNEW2 = 17 * COIN;
+       }
+       else if(nHeight > 690184 && nHeight < 862986)
+       {
+            nSubsidyNEW2 = 14 * COIN;
+       }
+       else if(nHeight > 862985 && nHeight < 1213387)
+       {
+            nSubsidyNEW2 = 12 * COIN;
+       }
+       else if(nHeight > 1213386 && nHeight < 1386188)
+       {
+            nSubsidyNEW2 = 11 * COIN;
+       }
+       else if(nHeight > 1386187 && nHeight < 1736589)
+       {
+            nSubsidyNEW2 = 9 * COIN;
+       }
+       else if(nHeight > 1736588 && nHeight < 2086990)
+       {
+            nSubsidyNEW2 = 8 * COIN;
+       }
+       else if(nHeight > 2086989 && nHeight < 2437391)
+       {
+            nSubsidyNEW2 = 6 * COIN;
+       }
+       else if(nHeight > 2437390 && nHeight < 2787792)
+       {
+            nSubsidyNEW2 = 4 * COIN;
+       }
+       else if(nHeight > 2787791 && nHeight < 4539793)
+       {
+            nSubsidyNEW2 = 2 * COIN;
+       }
+       else if(nHeight > 4539792 && nHeight < 6291794)
+       {
+            nSubsidyNEW2 = 1 * COIN;
+       }
+       else if(nHeight > 6291793 && nHeight < 9795795)
+       {
+            nSubsidyNEW2 = 0.5 * COIN;
+       }
+       else if(nHeight > 9795794 && nHeight < 13299796)
+       {
+            nSubsidyNEW2 = 0.2 * COIN;
+       }
+       else if(nHeight > 13299795 && nHeight < 20307797)
+       {
+            nSubsidyNEW2 = 0.1 * COIN;
+       }
+       else
+       {
+            nSubsidyNEW2 = 0.7 * COIN;
+       }
+
+       //Random Superblock For HF v1.3.3
+        if(rand > 2099 && rand < 2199)  
+        {
+            nSubsidyNEW2 *= 3;
+        }
+
+
+    }
     else
     {
+
         // Mining phase: Subsidy is cut in half every SubsidyHalvingInterval
         nSubsidyNEW >>= (nHeight / Params().SubsidyHalvingIntervalNEW());
+    
     }
     
     // Inflation phase: Subsidy reaches minimum subsidy
     // Network is rewarded for transaction processing with transaction fees and 
     // the inflationary subsidy
-    if(nHeight < DIFF_SWITCH_BLOCK)
+    
+    /*if(nHeight < DIFF_SWITCH_BLOCK)
     {
         if (nSubsidy < nMinSubsidy)
         {
@@ -1372,9 +1432,14 @@ int64 static GetBlockValue(int nHeight, int64 nFees, uint256 prevHash)
             nSubsidyNEW = nMinSubsidyNEW;
         }
     }
+    */
     if(nHeight < DIFF_SWITCH_BLOCK)
     {
         return nSubsidy + nFees;
+    }
+    else if(nHeight > DIFF_SWITCH_BLOCK_3)
+    {
+        return nSubsidyNEW2 + nFees;
     }
     else
     {
