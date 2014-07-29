@@ -15,15 +15,16 @@ out collectively by the network.
 Specifications
 ------------------
 
-- Proof of Work based. Mine using any of the 3 algorithms : sha256d(default), scrypt or groestl.
+- Proof of Work based. Mine using any of the 5 algorithms : sha256d(default), scrypt, groestl, X11 or Blake256.
 - Difficulty is retargeted every block.
-- 90 second block target per algorithm (30 second average across 3 algorithms).
-- 111 million total coins
-- 72 coins per block. 
+- 450 second block target per algorithm (90 second average across 5 algorithms).
+- Gradual Reduction of Block rewards. 
 - Random superblock with 5 times the reward.
 - Bonus 1st 2 days after launch where Block reward is 3*72 Coins.
 
-
+ANN Thread
+------------------
+https://bitcointalk.org/index.php?topic=586320
 
 License
 -------
