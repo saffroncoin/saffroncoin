@@ -1306,7 +1306,7 @@ int64 static GetBlockValue(int nHeight, int64 nFees, uint256 prevHash)
         }
     }
 
-    else if(nHeight > DIFF_SWITCH_BLOCK_2 && nHeight < DIFF_SWITCH_BLOCK_3)
+    else if(nHeight > DIFF_SWITCH_BLOCK && nHeight < DIFF_SWITCH_BLOCK_3)
     {
         //Random Superblock
         if(rand > 2099 && rand < 2199)  
