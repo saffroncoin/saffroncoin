@@ -694,10 +694,10 @@ enum BlockStatus {
 };
 
 const int64 nBlockAlgoWorkWeightStart = 142000; // block where algo work weighting starts
-const int64_t nBlockSequentialAlgoRuleStart = 410000; // block where sequential algo rule starts
+const int64_t nBlockSequentialAlgoRuleStart = 394000; // block where sequential algo rule starts
 const int nBlockSequentialAlgoMaxCount = 3; // maximum sequential blocks of same algo
-const int64_t nBlockTimeWarpPreventStart = 410000; // block where time warp prevention starts
-const int64_t nBlockDiffAdjustV3 = 410000; // block where difficulty adjust V2 starts
+const int64_t nBlockTimeWarpPreventStart = 394000; // block where time warp prevention starts
+const int64_t nBlockDiffAdjustV3 = 394000; // block where difficulty adjust V2 starts
 
 /** The block chain is a tree shaped structure starting with the
  * genesis block at the root, with each block potentially having multiple
