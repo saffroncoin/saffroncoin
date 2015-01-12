@@ -1463,6 +1463,7 @@ static const int64 nAveragingTargetTimespanNEW = nAveragingInterval * nTargetSpa
 
 static const int64 nMaxAdjustDown = 4; // 4% adjustment down
 static const int64 nMaxAdjustUp = 2; // 2% adjustment up
+static const int64_t nMaxAdjustUpV2 = 4; // 4% adjustment up
 
 static const int64 nTargetTimespanAdjDown = nTargetTimespan * (100 + nMaxAdjustDown) / 100;
 
@@ -1502,6 +1503,7 @@ static const int64 nMinActualTimespan = nAveragingTargetTimespan * (100 - nMaxAd
 static const int64 nMaxActualTimespan = nAveragingTargetTimespan * (100 + nMaxAdjustDown) / 100;
 
 static const int64 nMinActualTimespanNEW = nAveragingTargetTimespanNEW * (100 - nMaxAdjustUp) / 100;
+static const int64_t nMinActualTimespanV2 = nAveragingTargetTimespan * (100 - nMaxAdjustUpV2) / 100;
 static const int64 nMaxActualTimespanNEW = nAveragingTargetTimespanNEW * (100 + nMaxAdjustDown) / 100;
     
 
@@ -1544,21 +1546,67 @@ unsigned int static GetNextWorkRequired(const CBlockIndex* pindexLast, const CBl
 
     // find previous block with same algo
     const CBlockIndex* pindexPrev = GetLastBlockIndexForAlgo(pindexLast, algo);
-    
-    // find first block in averaging interval
-    // Go back by what we want to be nAveragingInterval blocks
-    const CBlockIndex* pindexFirst = pindexPrev;
-    for (int i = 0; pindexFirst && i < nAveragingInterval - 1; i++)
+    if (pindexPrev == NULL)
+        return nProofOfWorkLimit;
+
+    const CBlockIndex* pindexFirst = NULL;
+
+    if (pindexLast->nHeight >= nBlockTimeWarpPreventStart)
     {
-        pindexFirst = pindexFirst->pprev;
-        pindexFirst = GetLastBlockIndexForAlgo(pindexFirst, algo);
+        // find first block in averaging interval
+        // Go back by what we want to be nAveragingInterval blocks
+        pindexFirst = pindexPrev;
+        for (int i = 0; pindexFirst && i < nAveragingInterval - 1; i++)
+        {
+            pindexFirst = pindexFirst->pprev;
+            pindexFirst = GetLastBlockIndexForAlgo(pindexFirst, algo);
+        }
+        if (pindexFirst == NULL)
+            return nProofOfWorkLimit; // not nAveragingInterval blocks of this algo available
+
+        const CBlockIndex* pindexFirstPrev;
+        for ( ;; )
+        {
+            // check blocks before first block for time warp
+            pindexFirstPrev = pindexFirst->pprev;
+            if (pindexFirstPrev == NULL)
+                return nProofOfWorkLimit;
+            pindexFirstPrev = GetLastBlockIndexForAlgo(pindexFirstPrev, algo);
+            if (pindexFirstPrev == NULL)
+                return nProofOfWorkLimit;
+            // take previous block if block times are out of order
+            if (pindexFirstPrev->GetBlockTime() > pindexFirst->GetBlockTime())
+            {
+                printf("  First blocks out of order times, swapping:   %d   %d\n", pindexFirstPrev->GetBlockTime(), pindexFirst->GetBlockTime());
+                pindexFirst = pindexFirstPrev;
+            }
+            else
+                break;
+        }
     }
-    if (pindexFirst == NULL)
-        return nProofOfWorkLimit; // not nAveragingInterval blocks of this algo available
+
+    else
+    {
+    
+        // find first block in averaging interval
+        // Go back by what we want to be nAveragingInterval blocks
+        pindexFirst = pindexPrev;
+        for (int i = 0; pindexFirst && i < nAveragingInterval - 1; i++)
+        {
+            pindexFirst = pindexFirst->pprev;
+            pindexFirst = GetLastBlockIndexForAlgo(pindexFirst, algo);
+        }
+        if (pindexFirst == NULL)
+            return nProofOfWorkLimit; // not nAveragingInterval blocks of this algo available
+
+    }
 
     // Limit adjustment step
-    int64 nActualTimespan = pindexPrev->GetBlockTime() - pindexFirst->GetBlockTime();
-    printf("  nActualTimespan = %"PRI64d"  before bounds\n", nActualTimespan);
+    int64_t nActualTimespan = pindexPrev->GetBlockTime() - pindexFirst->GetBlockTime();
+    printf("  nActualTimespan = %d before bounds   %d   %d\n", nActualTimespan, pindexPrev->GetBlockTime(), pindexFirst->GetBlockTime());
+
+    
+
     if(pindex->nHeight < DIFF_SWITCH_BLOCK_2)
         {
             if (nActualTimespan < nMinActualTimespan)
@@ -1566,13 +1614,23 @@ unsigned int static GetNextWorkRequired(const CBlockIndex* pindexLast, const CBl
             if (nActualTimespan > nMaxActualTimespan)
             nActualTimespan = nMaxActualTimespan;
         }
-        else
+    else if (pindexLast->nHeight >= nBlockDiffAdjustV3)
+        {
+            if (nActualTimespan < nMinActualTimespanV2)
+            nActualTimespan = nMinActualTimespanV2;
+            if (nActualTimespan > nMaxActualTimespanNEW)
+            nActualTimespan = nMaxActualTimespanNEW;
+        }
+
+    else
         {
             if (nActualTimespan < nMinActualTimespanNEW)
             nActualTimespan = nMinActualTimespanNEW;
             if (nActualTimespan > nMaxActualTimespanNEW)
             nActualTimespan = nMaxActualTimespanNEW;
         }
+
+        printf("  nActualTimespan = %d after bounds   %d   %d\n", nActualTimespan, nMinActualTimespanV2, nMaxActualTimespanNEW);
     
 
     // Retarget
@@ -2559,6 +2617,26 @@ bool AcceptBlock(CBlock& block, CValidationState& state, CDiskBlockPos* dbp)
             return state.DoS(10, error("AcceptBlock() : prev block not found"));
         pindexPrev = (*mi).second;
         nHeight = pindexPrev->nHeight+1;
+
+        // Check count of sequence of same algo
+        if ( (TestNet() && (nHeight > 200))
+            || (nHeight > nBlockSequentialAlgoRuleStart) )
+        {
+            int nAlgo = block.GetAlgo();
+            int nAlgoCount = 1;
+            CBlockIndex* piPrev = pindexPrev;
+            while (piPrev && (nAlgoCount <= nBlockSequentialAlgoMaxCount))
+            {
+                if (piPrev->GetAlgo() != nAlgo)
+                    break;
+                nAlgoCount++;
+                piPrev = piPrev->pprev;
+            }
+            if ((nHeight > nBlockSequentialAlgoRuleStart) && (nAlgoCount > nBlockSequentialAlgoMaxCount))
+            {
+                return state.DoS(100, error("AcceptBlock() : too many blocks from same algo"));
+            }
+        }
 
         // Check proof of work
         if (block.nBits != GetNextWorkRequired(pindexPrev, &block, block.GetAlgo()))
