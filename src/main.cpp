@@ -1504,6 +1504,7 @@ static const int64 nMaxActualTimespan = nAveragingTargetTimespan * (100 + nMaxAd
 
 static const int64 nMinActualTimespanNEW = nAveragingTargetTimespanNEW * (100 - nMaxAdjustUp) / 100;
 static const int64_t nMinActualTimespanV2 = nAveragingTargetTimespan * (100 - nMaxAdjustUpV2) / 100;
+static const int64 nMinActualTimespanV3 = nAveragingTargetTimespanNEW * (100 - nMaxAdjustUpV2) / 100;
 static const int64 nMaxActualTimespanNEW = nAveragingTargetTimespanNEW * (100 + nMaxAdjustDown) / 100;
     
 
@@ -1606,31 +1607,34 @@ unsigned int static GetNextWorkRequired(const CBlockIndex* pindexLast, const CBl
     printf("  nActualTimespan = %d before bounds   %d   %d\n", nActualTimespan, pindexPrev->GetBlockTime(), pindexFirst->GetBlockTime());
 
     
-
+    int64_t nMinTimespan, nMaxTimespan;
     if(pindex->nHeight < DIFF_SWITCH_BLOCK_2)
-        {
-            if (nActualTimespan < nMinActualTimespan)
-            nActualTimespan = nMinActualTimespan;
-            if (nActualTimespan > nMaxActualTimespan)
-            nActualTimespan = nMaxActualTimespan;
-        }
-    else if (pindexLast->nHeight >= nBlockDiffAdjustV3)
-        {
-            if (nActualTimespan < nMinActualTimespanV2)
-            nActualTimespan = nMinActualTimespanV2;
-            if (nActualTimespan > nMaxActualTimespanNEW)
-            nActualTimespan = nMaxActualTimespanNEW;
-        }
-
+    {
+        nMinTimespan = nMinActualTimespan;
+        nMaxTimespan = nMaxActualTimespan;
+    }
+    else if (pindexLast->nHeight < nBlockDiffAdjustV3)
+    {
+        nMinTimespan = nMinActualTimespanNEW;
+        nMaxTimespan = nMaxActualTimespanNEW;
+    }
+    else if (pindexLast->nHeight < nBlockDiffAdjustV4)
+    {
+        nMinTimespan = nMinActualTimespanV2;
+        nMaxTimespan = nMaxActualTimespanNEW;
+    }
     else
-        {
-            if (nActualTimespan < nMinActualTimespanNEW)
-            nActualTimespan = nMinActualTimespanNEW;
-            if (nActualTimespan > nMaxActualTimespanNEW)
-            nActualTimespan = nMaxActualTimespanNEW;
-        }
+    {
+        nMinTimespan = nMinActualTimespanV3;
+        nMaxTimespan = nMaxActualTimespanNEW;
+    }
 
-        printf("  nActualTimespan = %d after bounds   %d   %d\n", nActualTimespan, nMinActualTimespanV2, nMaxActualTimespanNEW);
+    if (nActualTimespan < nMinTimespan)
+        nActualTimespan = nMinTimespan;
+    if (nActualTimespan > nMaxTimespan)
+        nActualTimespan = nMaxTimespan;
+
+        printf("  nActualTimespan = %d after bounds   %d   %d\n", nActualTimespan, nMinTimespan, nMaxTimespan);
     
 
     // Retarget
